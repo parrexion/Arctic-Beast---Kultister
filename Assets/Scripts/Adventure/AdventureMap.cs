@@ -7,7 +7,7 @@ public class AdventureMap : MonoBehaviour {
 	public int height = 4;
 	public int goalCount = 3;
 	public int correctness = 4;
-	public List<AdventureTile> challangeTiles;
+	public AdventureTile challangeTile;
 	public AdventureTile walkableTile;
 	public AdventureTile wallTile;
 	public AdventureTile blockingWallTile;
@@ -60,7 +60,7 @@ public class AdventureMap : MonoBehaviour {
 			CreatePath (walkables[i-1], walkables[i], walkableTile);
 		}
 
-		CreatePath (new int[]{ width - 1, 0 }, new int[]{ 0, height - 1 }, challangeTiles [0]);
+		CreatePath (new int[]{ width - 1, 0 }, new int[]{ 0, height - 1 }, challangeTile);
 
 	}
 
