@@ -6,6 +6,7 @@ public class AdventureMap : MonoBehaviour {
 	public int width = 4;
 	public int height = 4;
 	public int goalCount = 3;
+	public int correctness = 4;
 	public List<AdventureTile> challangeTiles;
 	public AdventureTile walkableTile;
 	public AdventureTile wallTile;
@@ -81,15 +82,30 @@ public class AdventureMap : MonoBehaviour {
 		int[] dir = { stop [0] - pos [0], stop [1] - pos [1] };
 		AddTile (pos[0], pos[1], type);
 
-		while(dir[1] != 0 && dir[0] != 0){
+		while(dir[1] != 0 || dir[0] != 0){
 			Debug.Log (dir[0]+", "+dir[1]);
 
-			if (Abs (dir [0]) > Abs (dir [1])) {
-				pos [0] = pos[0]+ Sign(dir[0]);
+			int rand = Random.Range (0, 4);
+
+			if (rand < 2) {
+				pos [rand] = pos [rand] + Random.Range (-1, 2);
+				if (pos [rand] < 0)
+					pos [rand] = 0;
+				if (pos [0] >= width)
+					pos [0] = width - 1;
+				if (pos [1] >= height)
+					pos [0] = height - 1;
 			}
+
 			else {
-				pos[1] = pos [1] + Sign(dir[1]);
+				if (Abs (dir [0]) > Abs (dir [1])) {
+					pos [0] = pos[0]+ Sign(dir[0]);
+				}
+				else {
+					pos[1] = pos [1] + Sign(dir[1]);
+				}
 			}
+
 			AddTile (pos[0], pos[1], type);
 
 			dir = new[]{ stop [0] - pos [0], stop [1] - pos [1] };

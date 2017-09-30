@@ -422,7 +422,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 20
   height: 20
-  goalCount: 5
+  goalCount: 10
+  correctness: 5
   challangeTiles:
   - {fileID: 114199395023662700, guid: c101b554f9e80a44a98f7064a03a1ce4, type: 2}
   walkableTile: {fileID: 114709368014986724, guid: 30b3465f56aae054597d0837acfb82f7,
