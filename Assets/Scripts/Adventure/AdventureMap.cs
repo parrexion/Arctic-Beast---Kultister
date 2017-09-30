@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Direction {
+    North,
+    East,
+    South,
+    West
+}
+
 public class AdventureMap : MonoBehaviour {
     public Dictionary<XYCoordinate, AdventureTile> tiles = new Dictionary<XYCoordinate, AdventureTile>();
     public PlayerActor player;
@@ -29,13 +36,23 @@ public class AdventureMap : MonoBehaviour {
 	}
 }
 
-public class XYCoordinate
+[System.Serializable]
+public class XYCoordinate : IEqualityComparer<XYCoordinate>
 {
-    protected int x;
-    protected int y;
+    public int x;
+    public int y;
     public XYCoordinate(int x, int y)
     {
         this.x = x;
         this.y = y;
+    }
+
+    public bool Equals(XYCoordinate one, XYCoordinate other)
+    {
+        return other.x == one.x && one.y == other.y;    
+    }
+    public int GetHashCode(XYCoordinate coord)
+    {
+        return coord.x.GetHashCode() ^ coord.y.GetHashCode();
     }
 }
