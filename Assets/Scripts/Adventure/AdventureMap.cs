@@ -60,6 +60,8 @@ public class AdventureMap : MonoBehaviour {
 			CreatePath (walkables[i-1], walkables[i], walkableTile);
 		}
 
+		CreatePath (new int[]{ width - 1, 0 }, new int[]{ 0, height - 1 }, challangeTiles [0]);
+
 	}
 
 
@@ -88,6 +90,7 @@ public class AdventureMap : MonoBehaviour {
 			int rand = Random.Range (0, 4);
 
 			if (rand < 2) {
+				Debug.Log ("Random nonsense on " + rand);
 				pos [rand] = pos [rand] + Random.Range (-1, 2);
 				if (pos [rand] < 0)
 					pos [rand] = 0;
@@ -115,7 +118,7 @@ public class AdventureMap : MonoBehaviour {
 
 	private void AddTile(int i, int j, AdventureTile type) {
 
-		Debug.Log ("placen tiles at square "+i+", "+j);
+		Debug.Log ("placing tiles at square "+i+", "+j);
 		AdventureTile old = tiles [i, j];
 		if (old != null) Destroy (old.gameObject);
 		AdventureTile myTile = Instantiate(type, new Vector3(i, j, 0f), Quaternion.identity);
