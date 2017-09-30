@@ -59,6 +59,14 @@ public class InventoryHandler : MonoBehaviour {
 		return false;
 	}
 
+	public bool HasTool(string toolName){
+		for (int i = 0; i < equippedItems.Length; i++) {
+			if (equippedItems[i].itemName == toolName)
+			return true;
+		}
+		return false;
+	}
+
 	public void RemoveItem(int id){
 		SetItem(id,null);
 		if (onItemChangedCallback != null)

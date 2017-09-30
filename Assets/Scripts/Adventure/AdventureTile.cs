@@ -1,6 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+//[CreateAssetMenu (menuName = "Adventure Tile")]
+public class AdventureTile : MonoBehaviour {
+
 public enum TerrainType {
     Snow, //Basic terrain -- walkable by everyone
     Water, //Walkable by swimmers
@@ -8,19 +12,15 @@ public enum TerrainType {
     BigRock, //Blocks walking, blocks sight.
     Tree,
 };
-
-//[CreateAssetMenu (menuName = "Adventure Tile")]
-public class AdventureTile : MonoBehaviour {
-
     // Use this for initialization
     //public string name;
     public bool blocksSight;
     public TerrainType terrainType;
     public List<GameItem> pickups;
 
-    [SerializeField] public OnEnterAction enterAction;
-    [SerializeField] public OnExitAction exitAction;
-    [SerializeField] public OnTickAction tickAction;
+    public OnEnterAction enterAction;
+    public OnExitAction exitAction;
+    public OnTickAction tickAction;
 
     public int x, y;
     public AdventureMap parentMap;
@@ -34,7 +34,7 @@ public class AdventureTile : MonoBehaviour {
 
     public bool CanWalk(Actor walker)
     {
-        return walker.walkableTerrains.Contains(this.terrainType);
+        return walker.walkableTerrains.Contains(terrainType);
     }
     public void OnEnter() {
         this.enterAction.run();
@@ -48,42 +48,4 @@ public class AdventureTile : MonoBehaviour {
         this.tickAction.run();
     }
 
-}
-
-[System.Serializable]
-public abstract class OnEnterAction
-{
-    public abstract void run();
-}
-[System.Serializable]
-public abstract class OnExitAction
-{
-    public abstract void run();
-}
-[System.Serializable]
-public abstract class OnTickAction
-{
-    public abstract void run();
-}
-
-[System.Serializable]
-public class NullEnterAction : OnEnterAction
-{
-    public override void run()
-    {
-    }
-}
-[System.Serializable]
-public class NullExitAction : OnExitAction
-{
-    public override void run()
-    {
-    }
-}
-[System.Serializable]
-public class NullTickAction : OnTickAction
-{
-    public override void run()
-    {
-    }
 }

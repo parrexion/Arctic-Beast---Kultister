@@ -7,6 +7,7 @@ public class Item : ScriptableObject {
 
 	public enum ItemType {EQUIP,CONSUME,OTHER}
 
+	public string itemName;
 	public ItemType type;
 	public Sprite icon;
 }
