@@ -19,6 +19,19 @@ public class AdventureMap : MonoBehaviour {
 	// Use this for initialization
 	void Start() {
 
+		LevelSpec spec = LevelSpec.instance;
+
+		if (spec != null) {
+
+			challangeTile = spec.challangeTile;
+			npcs = spec.npcs;
+			correctness = spec.correctness;
+			width = spec.width;
+			height = spec.height;
+			goalCount = spec.goalCount;
+
+		}
+
 		int[] startPoint = { 0, 0 };
 		for(int i = 0; i < goalCount; ++i) {
 			goalPoints.Add(new int[]{Random.Range(0, width), Random.Range(0, height)});
