@@ -190,11 +190,11 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 143492417}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.018284928, y: -0.006094845, z: -10}
+  m_LocalScale: {x: 0.33333334, y: 0.33333334, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 600225679}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &600225678
@@ -223,7 +223,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 143492422}
   m_Father: {fileID: 1793440549}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -312,7 +313,7 @@ Transform:
   m_Children:
   - {fileID: 600225679}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1793440550
 MonoBehaviour:
@@ -325,13 +326,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d82b623c6475ccb4fbefaffd17c8f70f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  width: 30
+  height: 30
+  goalPoints: 3
+  challangeTiles:
+  - {fileID: 114199395023662700, guid: c101b554f9e80a44a98f7064a03a1ce4, type: 2}
+  walkableTile: {fileID: 114709368014986724, guid: 30b3465f56aae054597d0837acfb82f7,
+    type: 2}
+  wallTile: {fileID: 114817793884993290, guid: d8d07a2be15133041b880a2cb009ab00, type: 2}
+  blockingWallTile: {fileID: 114762728094702796, guid: 7d7380c5952cec742998366ba6111a71,
+    type: 2}
   player: {fileID: 0}
   npcs: []
-  prefabs:
-  - {fileID: 114709368014986724, guid: 30b3465f56aae054597d0837acfb82f7, type: 2}
-  - {fileID: 114199395023662700, guid: c101b554f9e80a44a98f7064a03a1ce4, type: 2}
-  - {fileID: 114762728094702796, guid: 7d7380c5952cec742998366ba6111a71, type: 2}
-  - {fileID: 114817793884993290, guid: d8d07a2be15133041b880a2cb009ab00, type: 2}
 --- !u!1 &1878729725
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,5 +382,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

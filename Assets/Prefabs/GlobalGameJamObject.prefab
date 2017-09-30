@@ -72,3 +72,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6209107f855a0524eb32237aac3ea53c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defeatableTiles:
+  - {fileID: 114199395023662700, guid: c101b554f9e80a44a98f7064a03a1ce4, type: 2}
+  walkableTile: {fileID: 114709368014986724, guid: 30b3465f56aae054597d0837acfb82f7,
+    type: 2}
+  wall: {fileID: 114817793884993290, guid: d8d07a2be15133041b880a2cb009ab00, type: 2}
+  blockingWall: {fileID: 114762728094702796, guid: 7d7380c5952cec742998366ba6111a71,
+    type: 2}

@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class GlobalValues : MonoBehaviour {
 
-	public List<GameObject> tileTypes;
+	public List<AdventureTile> defeatableTiles;
+	public AdventureTile walkableTile;
+	public AdventureTile wall;
+	public AdventureTile blockingWall;
 
 	#region Singleton
 	public static GlobalValues instance = null;
