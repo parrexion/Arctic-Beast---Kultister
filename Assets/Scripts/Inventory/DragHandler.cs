@@ -11,12 +11,14 @@ public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler,
 	public static GameObject itemBeingDragged = null;
 
 	public InventorySlot itemSlot;
-	private Image image;
 	public int slotID;
 
+	private Image image;
+    private GameObject inventoryParent;
 
     void Start(){
         image = GetComponent<Image>();
+        inventoryParent = GetComponentInParent<SpriteRenderer>().gameObject;
     }
 
     void IBeginDragHandler.OnBeginDrag(PointerEventData eventData) {
@@ -24,6 +26,7 @@ public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler,
 		slotID = itemSlot.id;
 		image.raycastTarget = false;
 		transform.parent.transform.SetAsLastSibling();
+        inventoryParent.transform.SetAsLastSibling();
     }
 
     void IDragHandler.OnDrag(PointerEventData eventData) {

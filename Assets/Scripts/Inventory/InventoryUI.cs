@@ -18,12 +18,12 @@ public class InventoryUI : MonoBehaviour {
 
 		equippedItemsUI = equippedContainer.GetComponentsInChildren<InventorySlot>();
 		for (int i = 0; i < equippedItemsUI.Length; i++) {
-			equippedItemsUI[i].id = 101 + i;
+			equippedItemsUI[i].id = 100 + i;
 		}
 
 		otherItemsUI = otherContainer.GetComponentsInChildren<InventorySlot>();
 		for (int i = 0; i < otherItemsUI.Length; i++) {
-			otherItemsUI[i].id = 101 + i;
+			otherItemsUI[i].id = i;
 		}
 	}
 
@@ -38,7 +38,7 @@ public class InventoryUI : MonoBehaviour {
 		
 		for (int i = 0; i < equippedItemsUI.Length; i++) {
 			if (inventory.equippedItems[i] != null){
-				equippedItemsUI[i].SetItem(inventory.GetItem(101+i));
+				equippedItemsUI[i].SetItem(inventory.GetItem(100+i));
 			}
 			else {
 				equippedItemsUI[i].RemoveItem();
@@ -46,11 +46,13 @@ public class InventoryUI : MonoBehaviour {
 		}
 		for (int i = 0; i < otherItemsUI.Length; i++) {
 			if (inventory.otherItems[i] != null){
-				otherItemsUI[i].SetItem(inventory.GetItem(101+i));
+				otherItemsUI[i].SetItem(inventory.otherItems[i]);
+				Debug.Log("Found item");
 			}
 			else {
 				otherItemsUI[i].RemoveItem();
 			}
 		}
+		Debug.Log("Updated!");
 	}
 }
