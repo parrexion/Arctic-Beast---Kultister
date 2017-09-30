@@ -19,8 +19,8 @@ public enum TerrainType {
     public List<GameItem> pickups;
 
     public OnEnterAction enterAction;
-    [SerializeField] public OnExitAction exitAction;
-    [SerializeField] public OnTickAction tickAction;
+    public OnExitAction exitAction;
+    public OnTickAction tickAction;
 
     public int x, y;
     public AdventureMap parentMap;
@@ -48,42 +48,4 @@ public enum TerrainType {
         this.tickAction.run();
     }
 
-}
-
-[System.Serializable]
-public abstract class OnEnterAction
-{
-    public abstract void run();
-}
-[System.Serializable]
-public abstract class OnExitAction
-{
-    public abstract void run();
-}
-[System.Serializable]
-public abstract class OnTickAction
-{
-    public abstract void run();
-}
-
-[System.Serializable]
-public class NullEnterAction : OnEnterAction
-{
-    public override void run()
-    {
-    }
-}
-[System.Serializable]
-public class NullExitAction : OnExitAction
-{
-    public override void run()
-    {
-    }
-}
-[System.Serializable]
-public class NullTickAction : OnTickAction
-{
-    public override void run()
-    {
-    }
 }

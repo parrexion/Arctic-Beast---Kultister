@@ -7,6 +7,8 @@ public class Actor : MonoBehaviour {
     // Use this for initialization
 
     public int x, y;
+    public int hp;
+    public int attackStrength;
     public AdventureMap parentMap;
 
     public void initPlayer(int x, int y, AdventureMap parentMap)
@@ -16,31 +18,36 @@ public class Actor : MonoBehaviour {
         this.parentMap = parentMap;
     }
 
+    public virtual bool meleeAttack(AdventureMap.Direction ad)
+    {
+        return false;
+    }
+
+    public virtual void takeDamage(int dmg)
+    {
+        this.hp -= dmg;
+        Debug.Log(string.Format("Took {0} damage. HP now {1}", dmg, this.hp));
+        if(this.hp <= 0)
+        {
+            this.die();
+        }
+    }
+    public virtual void die()
+    {
+        return;
+    }
+
     public bool walk(AdventureMap.Direction wd)
     {
         int x = this.x;
         int y = this.y;
-        switch (wd)
-        {
-            case AdventureMap.Direction.North:
-                y += 1;
-                break;
-            case AdventureMap.Direction.South:
-                y -= 1;
-                break;
-            case AdventureMap.Direction.West: x -= 1;
-                break;
-            case AdventureMap.Direction.East: x += 1;
-                break;
-
-        }
+        AdventureMap.stepFrom(ref x, ref y, wd);
         //Debug.Log(string.Format("Trying to walk. {0} {1} {2}", this.parentMap.tiles.Count, x, y));
         AdventureTile targetTile = this.parentMap.getTileAt(x, y);
         if (targetTile != null)
         {
             if (targetTile.CanWalk(this))
             {
-                Debug.Log("Can enter tile");
                 this.x = x;
                 this.y = y;
                 transform.position = new Vector3(x, y, 0f);
@@ -49,14 +56,11 @@ public class Actor : MonoBehaviour {
             }
             else
             {
-                Debug.Log("Cannot enter tile");
                 return false;
             }
         }
         else
         {
-
-			Debug.Log ("Could not find tile at {0} {1}.");
             return false;
         }
             

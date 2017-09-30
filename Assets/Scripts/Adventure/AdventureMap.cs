@@ -4,13 +4,14 @@ using UnityEngine;
 
 
 public class AdventureMap : MonoBehaviour {
-    
-public enum Direction {
-    North,
-    East,
-    South,
-    West
-}
+
+    public enum Direction {
+        Zero,
+        North,
+        East,
+        South,
+        West
+    }
 
     public AdventureTile[,] tiles;
     public PlayerActor player;
@@ -35,7 +36,17 @@ public enum Direction {
 
     // Update is called once per frame
     void Update() {
-
+        TurnManager turnManager = TurnManager.instance;
+        if (!turnManager.isPlayerTurn)
+        {
+            Debug.Log("[NPC ACTIVITY]");
+            foreach (NPActor npc in this.npcs)
+            {
+                //Debug.Log("npc acting");
+                npc.act();
+            }
+            turnManager.isPlayerTurn = true;
+        }
     }
 
     public AdventureTile getTileAt(int x, int y)
@@ -49,4 +60,51 @@ public enum Direction {
             return null;
         }
     }
+
+    public bool isTileOccupied(int x, int y, out NPActor outNpc)
+    {
+        outNpc = null;
+        foreach (NPActor npc in this.npcs)
+        {
+            if (npc.x == x && npc.y == y) {
+                outNpc = npc;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static void stepFrom(ref int x, ref int y, AdventureMap.Direction dir)
+    {
+        switch (dir)
+        {
+            case Direction.North:
+                y += 1;
+                break;
+            case Direction.South:
+                y -= 1;
+                break;
+            case Direction.West:
+                x -= 1;
+                break;
+            case Direction.East:
+                x += 1;
+                break;
+
+        }
+    }
+
+    public static AdventureMap.Direction oppDirection(AdventureMap.Direction dir)
+    {
+        switch (dir)
+        {
+            case Direction.South: return Direction.North;
+            case Direction.North: return Direction.South;
+            case Direction.West: return Direction.East;
+            case Direction.East: return Direction.West;
+        }
+        return Direction.North;
+    }
+    public static AdventureMap.Direction[] allDirections = new Direction[] {Direction.North,
+        Direction.East, Direction.South, Direction.West };
 }
