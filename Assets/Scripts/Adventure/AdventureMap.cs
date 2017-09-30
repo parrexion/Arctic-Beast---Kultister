@@ -22,6 +22,12 @@ public class AdventureMap : MonoBehaviour {
 		for(int i = 0; i < goalCount; ++i) {
 			goalPoints.Add(new int[]{Random.Range(0, width), Random.Range(0, height)});
 		}
+
+		List<int[]> npcPoints = new List<int[]> ();
+		foreach(NPActor ac in npcs) {
+			npcPoints.Add(new int[]{ac.x, ac.y});
+
+		}
 		GlobalValues values = GlobalValues.instance;
 		this.maxx = width;
 		this.maxy = height;
@@ -45,8 +51,9 @@ public class AdventureMap : MonoBehaviour {
 		List<int[]> walkables = new List<int[]> ();
 		walkables.Add (startPoint);
 		walkables.AddRange (goalPoints);
+		walkables.AddRange (npcPoints);
 
-		//Shuffle (walkables);
+		Shuffle (walkables);
 
 		for (int i = 1; i < walkables.Count; ++i) {
 			CreatePath (walkables[i-1], walkables[i], walkableTile);
