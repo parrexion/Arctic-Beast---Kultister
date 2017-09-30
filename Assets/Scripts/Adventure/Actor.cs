@@ -55,11 +55,7 @@ public class Actor : MonoBehaviour {
         }
         else
         {
-<<<<<<< HEAD
 			Debug.Log ("Could not find tile at {0} {1}.");
-=======
-            Debug.Log("Could not find tile at {0} {1}.");
->>>>>>> AdventureMap
             return false;
         }
             
