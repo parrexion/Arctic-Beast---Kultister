@@ -2,8 +2,115 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class AdventureMap : MonoBehaviour {
+	public int width = 4;
+	public int height = 4;
+	public int goalCount = 3;
+	public List<AdventureTile> challangeTiles;
+	public AdventureTile walkableTile;
+	public AdventureTile wallTile;
+	public AdventureTile blockingWallTile;
+	public AdventureTile[,] tiles;
+	public PlayerActor player;
+	public List<NPActor> npcs;
+	private List<int[]> goalPoints = new List<int[]>();
+	protected int maxx, maxy;
+	// Use this for initialization
+	void Start() {
+
+		int[] startPoint = { 0, 0 };
+		for(int i = 0; i < goalCount; ++i) {
+			goalPoints.Add(new int[]{Random.Range(0, width), Random.Range(0, height)});
+		}
+		GlobalValues values = GlobalValues.instance;
+		this.maxx = width;
+		this.maxy = height;
+		this.tiles = new AdventureTile[width, height];
+		for (int i = 0; i < width; i++) {
+			for (int j = 0; j < height; j++)
+			{
+				AdventureTile type = blockingWallTile;
+				if (Random.Range (0, 2) == 1) type = wallTile;
+				AddTile (i, j, type);
+			}
+		}
+
+		//AddTile (startPoint [0], startPoint [1], walkableTile);
+
+		//foreach (int[] gp in goalPoints) {
+		//	AddTile (gp [0], gp [1], walkableTile);
+		//
+		//}
+
+		List<int[]> walkables = new List<int[]> ();
+		walkables.Add (startPoint);
+		walkables.AddRange (goalPoints);
+
+		//Shuffle (walkables);
+
+		for (int i = 1; i < walkables.Count; ++i) {
+			CreatePath (walkables[i-1], walkables[i], walkableTile);
+		}
+
+	}
+
+
+	private int Sign(int i) {
+		if (i == 0) return 0;
+		Debug.Log ("Sign of " + i + " is " + (i / i));
+		return i / Abs(i);
+	}
+
+	private int Abs(int i) {
+		if (i == 0) return 0;
+		return Mathf.Abs(i);
+	}
+
+	private void CreatePath(int[] start, int[] stop, AdventureTile type) {
+
+		Debug.Log ("start: "+start[0]+", "+start[1]);
+		Debug.Log ("stop: "+stop[0]+", "+stop[1]);
+		int[] pos = start;
+		int[] dir = { stop [0] - pos [0], stop [1] - pos [1] };
+		AddTile (pos[0], pos[1], type);
+
+		while(dir[1] != 0 && dir[0] != 0){
+			Debug.Log (dir[0]+", "+dir[1]);
+
+			if (Abs (dir [0]) > Abs (dir [1])) {
+				pos [0] = pos[0]+ Sign(dir[0]);
+			}
+			else {
+				pos[1] = pos [1] + Sign(dir[1]);
+			}
+			AddTile (pos[0], pos[1], type);
+
+			dir = new[]{ stop [0] - pos [0], stop [1] - pos [1] };
+		}
+
+	}
+
+	private void AddTile(int i, int j, AdventureTile type) {
+
+		Debug.Log ("placen tiles at square "+i+", "+j);
+		AdventureTile old = tiles [i, j];
+		if (old != null) Destroy (old.gameObject);
+		AdventureTile myTile = Instantiate(type, new Vector3(i, j, 0f), Quaternion.identity);
+		myTile.initTile(i, j, this);
+		this.tiles[i, j] = myTile;
+	}
+
+	private void Shuffle(List<int[]> list) {
+		int n = list.Count;
+
+		while (n > 1) {
+			int k = Random.Range (0, n);
+			n--;
+			int[] val = list [k];
+			list [k] = list [n];
+			list [n] = val;
+		}
+	}
 
     public enum Direction {
         Zero,
@@ -11,27 +118,6 @@ public class AdventureMap : MonoBehaviour {
         East,
         South,
         West
-    }
-
-    public AdventureTile[,] tiles;
-    public PlayerActor player;
-    public List<NPActor> npcs;
-    public List<AdventureTile> prefabs;
-    protected int maxx, maxy;
-    // Use this for initialization
-    void Start() {
-        this.maxx = 4;
-        this.maxy = 4;
-        this.tiles = new AdventureTile[maxx, maxy];
-        int n = prefabs.Count;
-        for (int i = 0; i < maxx; i++) {
-            for (int j = 0; j < maxy; j++)
-            {
-                AdventureTile myTile = Instantiate(prefabs[Random.Range(0, n)], new Vector3(i, j, 0f), Quaternion.identity);
-                myTile.initTile(i, j, this);
-                this.tiles[i, j] = myTile;
-            }
-        }
     }
 
     // Update is called once per frame
