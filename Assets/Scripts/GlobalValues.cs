@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class GlobalValues : MonoBehaviour {
 
+	public List<GameObject> tileTypes;
+
 	#region Singleton
 	public static GlobalValues instance = null;
 	void Awake(){
