@@ -1117,6 +1117,54 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224370727767619536, guid: ecff0650312f1e443aad024d171fc162,
     type: 2}
   m_PrefabInternal: {fileID: 567154066}
+--- !u!1001 &599204622
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4278879613682676, guid: c3fee306f930cf441b6a0249cd17c5d7, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278879613682676, guid: c3fee306f930cf441b6a0249cd17c5d7, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278879613682676, guid: c3fee306f930cf441b6a0249cd17c5d7, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278879613682676, guid: c3fee306f930cf441b6a0249cd17c5d7, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278879613682676, guid: c3fee306f930cf441b6a0249cd17c5d7, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278879613682676, guid: c3fee306f930cf441b6a0249cd17c5d7, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278879613682676, guid: c3fee306f930cf441b6a0249cd17c5d7, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278879613682676, guid: c3fee306f930cf441b6a0249cd17c5d7, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114090835059814206, guid: c3fee306f930cf441b6a0249cd17c5d7,
+        type: 2}
+      propertyPath: testItem
+      value: 
+      objectReference: {fileID: 11400000, guid: a51d50d3b5af2cd40b942979e24c146c,
+        type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: c3fee306f930cf441b6a0249cd17c5d7, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &608618228
 Prefab:
   m_ObjectHideFlags: 0
@@ -2079,6 +2127,7 @@ GameObject:
   - component: {fileID: 1149472935}
   - component: {fileID: 1149472937}
   - component: {fileID: 1149472936}
+  - component: {fileID: 1149472938}
   m_Layer: 5
   m_Name: InventoryPanel
   m_TagString: Untagged
@@ -2139,6 +2188,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1149472934}
+--- !u!114 &1149472938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1149472934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b71ba8cb6c6ae0045abe1ce8273b21f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equippedContainer: {fileID: 1388583181}
+  otherContainer: {fileID: 58195574}
 --- !u!1001 &1177035063
 Prefab:
   m_ObjectHideFlags: 0

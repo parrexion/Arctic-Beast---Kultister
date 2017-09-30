@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+[RequireComponent(typeof(Image))]
 public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler, 
 							IEndDragHandler, IPointerClickHandler {
 
@@ -13,6 +14,10 @@ public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler,
 	private Image image;
 	public int slotID;
 
+
+    void Start(){
+        image = GetComponent<Image>();
+    }
 
     void IBeginDragHandler.OnBeginDrag(PointerEventData eventData) {
         itemBeingDragged = gameObject;

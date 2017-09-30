@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class InventoryUI : MonoBehaviour {
 
-	InventoryHandler inventory;
-	InventorySlot[] equippedItemsUI;
-	InventorySlot[] otherItemsUI;
+	private InventoryHandler inventory;
+	private InventorySlot[] equippedItemsUI;
+	private InventorySlot[] otherItemsUI;
 
-	Transform equippedContainer;
-	Transform otherContainer;
+	public Transform equippedContainer;
+	public Transform otherContainer;
 
 	// Use this for initialization
 	void Start () {

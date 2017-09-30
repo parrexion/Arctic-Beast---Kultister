@@ -25,6 +25,9 @@ public class InventoryHandler : MonoBehaviour {
 	public Item[] equippedItems;
 	public Item[] otherItems;
 
+	public Item testItem;
+
+
 	// Use this for initialization
 	void Start () {
 		equippedItems = new Item[equipInventorySize];
@@ -35,6 +38,13 @@ public class InventoryHandler : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	private void FillDefault(){
+		for (int i = 0; i < 3; i++)	{
+			Item test = ScriptableObject.Instantiate(testItem);
+			AddItem(test);
+		}
 	}
 
 
@@ -61,7 +71,7 @@ public class InventoryHandler : MonoBehaviour {
 	public void SwapItems(int startID, int endID) {
 		Item temp = GetItem(startID);
 		SetItem(startID, GetItem(endID));
-		SetItem(endID, GetItem(startID));
+		SetItem(endID, temp);
 
 		if (onItemChangedCallback != null)
 			onItemChangedCallback.Invoke();
