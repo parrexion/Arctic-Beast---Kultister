@@ -31,7 +31,7 @@ public class AdventureTile : MonoBehaviour {
         this.parentMap = parentMap;
     }
 
-    bool TryWalk(Actor walker)
+    public bool CanWalk(Actor walker)
     {
         return walker.walkableTerrains.Contains(this.terrainType);
     }
