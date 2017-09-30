@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6f7e9e9ef144bf4b8347faabd391744, type: 3}
-  m_Name: BasicItem
+  m_Name: Skull
   m_EditorClassIdentifier: 
   type: 0
-  icon: {fileID: 21300000, guid: 2acf5b1d2a32e9e48867d19deffc44b1, type: 3}
+  icon: {fileID: 21300000, guid: db4a6fb04bc5a9f4fbe0ce43ca528845, type: 3}

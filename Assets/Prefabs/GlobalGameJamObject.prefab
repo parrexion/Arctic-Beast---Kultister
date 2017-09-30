@@ -57,6 +57,10 @@ MonoBehaviour:
   otherInventorySize: 10
   equippedItems: []
   otherItems: []
+  testItems:
+  - {fileID: 11400000, guid: c733b3ea55d7e744aa429ec3b93a60ae, type: 2}
+  - {fileID: 11400000, guid: a51d50d3b5af2cd40b942979e24c146c, type: 2}
+  - {fileID: 11400000, guid: 3af8f2c06cb9048458890b46f13b64b4, type: 2}
 --- !u!114 &114379013942591064
 MonoBehaviour:
   m_ObjectHideFlags: 1
