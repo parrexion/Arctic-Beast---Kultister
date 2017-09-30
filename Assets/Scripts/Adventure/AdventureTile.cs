@@ -9,7 +9,8 @@ public enum TerrainType {
     Tree,
 };
 
-public abstract class AdventureTile : ScriptableObject {
+[CreateAssetMenu (menuName = "Adventure Tile")]
+public class AdventureTile : ScriptableObject {
 
     // Use this for initialization
     public Sprite graphic;
@@ -18,12 +19,47 @@ public abstract class AdventureTile : ScriptableObject {
     public TerrainType terrainType;
     public List<GameItem> pickups;
 
+    public OnEnterAction enterAction;
+    public OnExitAction exitAction;
+    public OnTickAction tickAction;
+
+    public XYCoordinate coordinates;
+    public AdventureMap parentMap;
+
+    public void initTile(int x, int y, AdventureMap parentMap)
+    {
+        this.coordinates = new XYCoordinate(x, y);
+        this.parentMap = parentMap;
+    }
+
     bool TryWalk(Actor walker)
     {
         return walker.walkableTerrains.Contains(this.terrainType);
     }
-    public abstract void OnEnter();
-    public abstract void OnExit();
-    public abstract void OnTick();
+    public void OnEnter() {
+        this.enterAction.run();
+    }
+    public void OnExit()
+    {
+        this.enterAction.run();
+}
+    public void OnTick()
+    {
+        this.tickAction.run();
+    }
 
 }
+
+public abstract class OnEnterAction
+{
+    public abstract void run();
+}
+public abstract class OnExitAction
+{
+    public abstract void run();
+}
+public abstract class OnTickAction
+{
+    public abstract void run();
+}
+
