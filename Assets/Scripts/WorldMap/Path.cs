@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections;
 
+[CreateAssetMenu(menuName = "World Map/Path")]
 public class Path : ScriptableObject {
 	public double travelRate = 0;
 	public double terrainCost;
