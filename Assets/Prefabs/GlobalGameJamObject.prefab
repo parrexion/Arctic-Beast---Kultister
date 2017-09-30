@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4278879613682676}
   - component: {fileID: 114379013942591064}
   - component: {fileID: 114090835059814206}
+  - component: {fileID: 114641117644464302}
+  - component: {fileID: 114967619250551782}
   m_Layer: 0
   m_Name: GlobalGameJamObject
   m_TagString: Untagged
@@ -79,3 +81,36 @@ MonoBehaviour:
   wall: {fileID: 114817793884993290, guid: d8d07a2be15133041b880a2cb009ab00, type: 2}
   blockingWall: {fileID: 114762728094702796, guid: 7d7380c5952cec742998366ba6111a71,
     type: 2}
+--- !u!114 &114641117644464302
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1442651829290224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74b6905d722453f44a3eecb693491742, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  days: 1
+  cleared: 0
+  currentLocation: 0
+--- !u!114 &114967619250551782
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1442651829290224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 272083f71ea08994caf3a460e7c74139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelID: -1
+  nextLevelID: -1
+  width: 4
+  height: 4
+  goalCount: 3
+  correctness: 4
+  challangeTile: {fileID: 0}
+  npcs: []

@@ -14,6 +14,8 @@ public class LevelSpec : MonoBehaviour {
 	}
 	#endregion
 
+	public int levelID = -1;
+	public int nextLevelID = -1;
 	public int width = 4;
 	public int height = 4;
 	public int goalCount = 3;

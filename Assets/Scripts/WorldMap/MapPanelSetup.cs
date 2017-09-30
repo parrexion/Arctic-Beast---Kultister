@@ -80,9 +80,9 @@ public class MapPanelSetup : MonoBehaviour {
 	}
 
 
-	public void ClickLocation(int id){
+	public void ClickLocation(int id, int nextID){
 		for (int i = 0; i < locations.Count; i++) {
-			locations[i].SetGoLocation(id);
+			locations[i].SetGoLocation(id, nextID);
 		}
 	}
 	
