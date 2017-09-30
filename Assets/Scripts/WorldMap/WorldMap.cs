@@ -9,6 +9,7 @@ public class WorldMap : MonoBehaviour {
 	public List<int> pathCosts;
 	public Path[] randomPaths;
 
+	public List<LocationClick> locations = new List<LocationClick>();
 
 	public void ShufflePaths(){
 		randomPaths = new Path[paths.Count];

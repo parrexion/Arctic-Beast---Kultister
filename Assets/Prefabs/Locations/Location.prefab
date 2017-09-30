@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 224800970250629820}
   - component: {fileID: 222053866776258886}
   - component: {fileID: 114154611728050216}
-  - component: {fileID: 114457095534645260}
+  - component: {fileID: 114490637249015470}
   m_Layer: 5
   m_Name: Location
   m_TagString: Untagged
@@ -56,7 +56,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114457095534645260
+--- !u!114 &114490637249015470
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -64,10 +64,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1678629137277060}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac8b1763a0224144383a256a13a3bed0, type: 3}
+  m_Script: {fileID: 11500000, guid: bdae386be06cdf845b799833564a6f1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  locationValues: {fileID: 11400000, guid: 8ab54b8cfa0f68d40a47d904e3ed769e, type: 2}
+  mapPanel: {fileID: 0}
+  toggleSprites:
+  - {fileID: 21300000, guid: 903b29f97dcedc04795c922da8cf0269, type: 3}
+  - {fileID: 21300000, guid: 01808229db2c3654da7b8574b43583ff, type: 3}
+  id: -1
+  backID: -1
+  location: {fileID: 0}
 --- !u!222 &222053866776258886
 CanvasRenderer:
   m_ObjectHideFlags: 1

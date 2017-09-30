@@ -17,6 +17,8 @@ public class MapPanelSetup : MonoBehaviour {
 	public float mapHeight = 30;
 	public float mapWidth = 30;
 
+	private List<LocationClick> locations = new List<LocationClick>();
+
 	// Use this for initialization
 	void Start () {
 		map = GetComponent<WorldMap>();
@@ -24,13 +26,19 @@ public class MapPanelSetup : MonoBehaviour {
 		RectTransform rect = GetComponent<RectTransform>();
 		float branchesSize = (float)map.randomPaths.Length+1;
 		float deviationRange = Mathf.PI / (branchesSize * 3);
+		int id = 1;
+
+		baseCamp.GetComponent<LocationClick>().id = 0;
+		baseCamp.GetComponent<LocationClick>().backID = -1;
+		baseCamp.GetComponent<LocationClick>().location.id = 0;
+		baseCamp.GetComponent<LocationClick>().mapPanel = this;
 
 		for (int branch = 0; branch < map.randomPaths.Length; branch++) {
 			Path p = map.randomPaths[branch];
-			Location location = baseCamp.GetComponent<LocationUI>().locationValues;
+			Location location = baseCamp.GetComponent<LocationClick>().location;
 			Vector3 position = baseCamp.transform.position;
 
-			mapWidth = rect.rect.width / 8f;
+			mapWidth = rect.rect.width / (2*(p.locationsOnPath.Length)+1);
 			mapHeight = rect.rect.height / (p.locationsOnPath.Length+1);
 
 			for (int i = 0; i < p.locationsOnPath.Length; i++) {
@@ -41,22 +49,27 @@ public class MapPanelSetup : MonoBehaviour {
 				GameObject createdLocation = GameObject.Instantiate(LocationPrefab);
 				createdLocation.transform.SetParent(locationContainer);
 
+				locations.Add(createdLocation.GetComponent<LocationClick>());
+				locations[id-1].id = id;
+				locations[id-1].location = nextLocation;
+				locations[id-1].location.id = id;
+				locations[id-1].backID = location.id;
+				locations[id-1].mapPanel = this;
+				id++;
+
 				float angle = (branch+1)*Mathf.PI/branchesSize;
 				angle += Random.Range(-deviationRange,deviationRange);
 				createdLocation.transform.localPosition = 
 							new Vector3((i+1) *mapWidth * Mathf.Cos(angle),
 										(i+1) *mapHeight * Mathf.Sin(angle), 0);
 				float distance = Vector3.Distance(position,createdLocation.transform.position) / 100f;
-				Debug.Log("Distance: " + distance);
 				Vector3 dir = createdLocation.transform.position - position;
-				Debug.Log("dir: " + dir);
 				angle = Mathf.Atan2(dir.y, dir.x) *Mathf.Rad2Deg;
 
 				GameObject createdPaths = GameObject.Instantiate(pathPrefab);
 				createdPaths.transform.SetParent(pathContainer);
 				createdPaths.transform.position = position;
 				createdPaths.transform.localScale = new Vector3(distance,1,1);
-
 				createdPaths.transform.Rotate(new Vector3(0,0,angle));
 
 				location.exits.Add(nextLocation);
@@ -66,9 +79,11 @@ public class MapPanelSetup : MonoBehaviour {
 		}
 	}
 
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+	public void ClickLocation(int id){
+		for (int i = 0; i < locations.Count; i++) {
+			locations[i].SetGoLocation(id);
+		}
 	}
+	
 }
