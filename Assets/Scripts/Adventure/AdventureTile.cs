@@ -9,11 +9,10 @@ public enum TerrainType {
     Tree,
 };
 
-[CreateAssetMenu (menuName = "Adventure Tile")]
-public class AdventureTile : ScriptableObject {
+//[CreateAssetMenu (menuName = "Adventure Tile")]
+public class AdventureTile : MonoBehaviour {
 
     // Use this for initialization
-    public Sprite graphic;
     //public string name;
     public bool blocksSight;
     public TerrainType terrainType;

@@ -16,7 +16,7 @@ public class AdventureMap : MonoBehaviour {
         for (int i = 0; i < maxx; i++) {
             for (int j = 0; j < maxy; j++)
             {
-                AdventureTile myTile = Instantiate(prefabs[Random.Range(0, n)] , new Vector3((float) i, (float) j, 0f), Quaternion.identity );
+                AdventureTile myTile = Instantiate(prefabs[Random.Range(0, n)], new Vector3(i, j, 0f), Quaternion.identity );
                 myTile.initTile(i, j, this);
                 this.tiles.Add(new XYCoordinate(i, j), myTile);
             }
