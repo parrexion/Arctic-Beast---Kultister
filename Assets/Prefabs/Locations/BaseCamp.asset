@@ -8,9 +8,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c564abfd2381f264e9d4d41bcbf30bb8, type: 3}
-  m_Name: TestPath2
+  m_Script: {fileID: 11500000, guid: 8edf0d4877a1f6a45a474387703a2299, type: 3}
+  m_Name: BaseCamp
   m_EditorClassIdentifier: 
-  travelRate: 0
-  terrainCost: 0
-  destination: {fileID: 11400000, guid: 061f6a74aa0eb1e40a3f0b1ff7452f33, type: 2}
+  locationName: Base Camp
+  explorationRate: 0
+  travelCost: 0
+  exits: []

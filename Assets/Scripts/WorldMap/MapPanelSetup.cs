@@ -2,50 +2,70 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(WorldMap))]
 public class MapPanelSetup : MonoBehaviour {
 
-	public WorldMap map;
+	private WorldMap map;
 
-	public GameObject locationContainer;
-	private Transform containerTransform;
-	public GameObject locationPrefab;
-	public float mapHeight = 45;
-	public float mapWidth = 45;
+	public Transform locationContainer = null;
+	public Transform pathContainer = null;
+	public Transform baseCamp = null;
+
+	public GameObject LocationPrefab = null;
+	public GameObject pathPrefab = null;
+
+	public float mapHeight = 30;
+	public float mapWidth = 30;
 
 	// Use this for initialization
 	void Start () {
-		containerTransform = locationContainer.GetComponent<Transform> ();
-		List<Path> currentLevel = map.baseExits;
-		List<Path> nextLevel = new List<Path>();
-		List<List<Path>> levels = new List<List<Path>>();
-		var locationsLeft = true;
-		while (currentLevel.Count > 0) {
-			foreach (Path p in currentLevel) {
-				nextLevel.AddRange(p.destination.exits);
+		map = GetComponent<WorldMap>();
+		map.ShufflePaths();
+		RectTransform rect = GetComponent<RectTransform>();
+		float branchesSize = (float)map.randomPaths.Length+1;
+		float deviationRange = Mathf.PI / (branchesSize * 3);
 
+		for (int branch = 0; branch < map.randomPaths.Length; branch++) {
+			Path p = map.randomPaths[branch];
+			Location location = baseCamp.GetComponent<LocationUI>().locationValues;
+			Vector3 position = baseCamp.transform.position;
+
+			mapWidth = rect.rect.width / 8f;
+			mapHeight = rect.rect.height / (p.locationsOnPath.Length+1);
+
+			for (int i = 0; i < p.locationsOnPath.Length; i++) {
+				int cost = map.GetRandomTravelCost();
+				Location nextLocation = p.locationsOnPath[i];
+				nextLocation.travelCost = cost;
+
+				GameObject createdLocation = GameObject.Instantiate(LocationPrefab);
+				createdLocation.transform.SetParent(locationContainer);
+
+				float angle = (branch+1)*Mathf.PI/branchesSize;
+				angle += Random.Range(-deviationRange,deviationRange);
+				createdLocation.transform.localPosition = 
+							new Vector3((i+1) *mapWidth * Mathf.Cos(angle),
+										(i+1) *mapHeight * Mathf.Sin(angle), 0);
+				float distance = Vector3.Distance(position,createdLocation.transform.position) / 100f;
+				Debug.Log("Distance: " + distance);
+				Vector3 dir = createdLocation.transform.position - position;
+				Debug.Log("dir: " + dir);
+				angle = Mathf.Atan2(dir.y, dir.x) *Mathf.Rad2Deg;
+
+				GameObject createdPaths = GameObject.Instantiate(pathPrefab);
+				createdPaths.transform.SetParent(pathContainer);
+				createdPaths.transform.position = position;
+				createdPaths.transform.localScale = new Vector3(distance,1,1);
+
+				createdPaths.transform.Rotate(new Vector3(0,0,angle));
+
+				location.exits.Add(nextLocation);
+				location = nextLocation;
+				position = createdLocation.transform.position;
 			}
-			levels.Add(currentLevel);
-			currentLevel = nextLevel;
-			nextLevel = new List<Path>();
-		}
-
-		int level = 1;
-		Debug.Log (levels.Count);
-		foreach(List<Path> l in levels) {
-			int location = 0;
-			foreach (Path p in l) {
-				Debug.Log (l.Count);
-				Transform trans = GameObject
-					.Instantiate(locationPrefab)
-					.GetComponent<Transform>();
-
-				trans.SetParent(containerTransform);
-				trans.localPosition = new Vector3(location*(mapWidth/l.Count), level*(mapHeight/levels.Count), 0f);
-				++location;
-			}
-			++level;
 		}
 	}
+
 	
 	// Update is called once per frame
 	void Update () {

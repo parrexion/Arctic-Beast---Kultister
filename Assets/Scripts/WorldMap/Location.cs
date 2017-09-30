@@ -1,18 +1,21 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
 [CreateAssetMenu(menuName = "World Map/Location")]
 public class Location : ScriptableObject {
 
+	private WorldMap map;
 	public string locationName;
-	public double explorationRate = 0;
-	public List<Path> exits;
+	public float explorationRate = 0;
+	public int travelCost = 10;
+	[HideInInspector] public List<Location> exits;
 
-	public double encounterRisk() {
+
+	public float encounterRisk() {
 		
-		return 1 - (1 / (1 + explorationRate));
+		return 1f - (1f / (1f + explorationRate));
 	}
+
 }
 

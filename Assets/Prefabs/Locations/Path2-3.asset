@@ -9,8 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8edf0d4877a1f6a45a474387703a2299, type: 3}
-  m_Name: TestLoc21
+  m_Name: Path2-3
   m_EditorClassIdentifier: 
-  locationName: 
+  locationName: Path2-1
   explorationRate: 0
+  travelCost: 10
   exits: []
