@@ -18,16 +18,17 @@ public class AdventureTile : MonoBehaviour {
     public TerrainType terrainType;
     public List<GameItem> pickups;
 
-    public OnEnterAction enterAction;
-    public OnExitAction exitAction;
-    public OnTickAction tickAction;
+    [SerializeField] public OnEnterAction enterAction;
+    [SerializeField] public OnExitAction exitAction;
+    [SerializeField] public OnTickAction tickAction;
 
-    public XYCoordinate coordinates;
+    public int x, y;
     public AdventureMap parentMap;
 
     public void initTile(int x, int y, AdventureMap parentMap)
     {
-        this.coordinates = new XYCoordinate(x, y);
+        this.x = x;
+        this.y = y;
         this.parentMap = parentMap;
     }
 
@@ -49,16 +50,40 @@ public class AdventureTile : MonoBehaviour {
 
 }
 
+[System.Serializable]
 public abstract class OnEnterAction
 {
     public abstract void run();
 }
+[System.Serializable]
 public abstract class OnExitAction
 {
     public abstract void run();
 }
+[System.Serializable]
 public abstract class OnTickAction
 {
     public abstract void run();
 }
 
+[System.Serializable]
+public class NullEnterAction : OnEnterAction
+{
+    public override void run()
+    {
+    }
+}
+[System.Serializable]
+public class NullExitAction : OnExitAction
+{
+    public override void run()
+    {
+    }
+}
+[System.Serializable]
+public class NullTickAction : OnTickAction
+{
+    public override void run()
+    {
+    }
+}
