@@ -58,7 +58,7 @@ public class Actor : MonoBehaviour {
         }
         else
         {
-            Debug.Log("Could not find tile at {0} {1}.")
+			Debug.Log ("Could not find tile at {0} {1}.");
             return false;
         }
             
