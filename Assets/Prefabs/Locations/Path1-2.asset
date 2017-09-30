@@ -8,9 +8,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c564abfd2381f264e9d4d41bcbf30bb8, type: 3}
-  m_Name: TestPath21
+  m_Script: {fileID: 11500000, guid: 8edf0d4877a1f6a45a474387703a2299, type: 3}
+  m_Name: Path1-2
   m_EditorClassIdentifier: 
-  travelRate: 0
-  terrainCost: 0
-  destination: {fileID: 11400000, guid: 2a347bca787f96346a8ec718646b9c24, type: 2}
+  locationName: Path1-2
+  explorationRate: 0
+  travelCost: 10
+  exits: []

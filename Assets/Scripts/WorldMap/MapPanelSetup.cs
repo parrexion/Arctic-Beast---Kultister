@@ -2,50 +2,42 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(WorldMap))]
 public class MapPanelSetup : MonoBehaviour {
 
-	public WorldMap map;
+	private WorldMap map;
 
-	public GameObject locationContainer;
-	private Transform containerTransform;
-	public GameObject locationPrefab;
-	public float mapHeight = 45;
-	public float mapWidth = 45;
+	public Transform locationContainer = null;
+	public Transform baseCamp = null;
+	public GameObject LocationPrefab = null;
+
+	public float mapHeight = 90;
+	public float mapWidth = 90;
 
 	// Use this for initialization
 	void Start () {
-		containerTransform = locationContainer.GetComponent<Transform> ();
-		List<Path> currentLevel = map.baseExits;
-		List<Path> nextLevel = new List<Path>();
-		List<List<Path>> levels = new List<List<Path>>();
-		var locationsLeft = true;
-		while (currentLevel.Count > 0) {
-			foreach (Path p in currentLevel) {
-				nextLevel.AddRange(p.destination.exits);
+		map = GetComponent<WorldMap>();
 
+		for (int branch = 0; branch < map.paths.Count; branch++) {
+			Path p = map.paths[branch];
+			Location location = baseCamp.GetComponent<LocationUI>().locationValues;
+			for (int i = 0; i < p.locationsOnPath.Length; i++) {
+				int cost = map.GetRandomTravelCost();
+				Location nextLocation = p.locationsOnPath[i];
+				nextLocation.travelCost = cost;
+				location.exits.Add(nextLocation);
+				location = nextLocation;
+
+				GameObject createdLocation = GameObject.Instantiate(LocationPrefab);
+				createdLocation.transform.SetParent(locationContainer);
+				createdLocation.transform.position = 
+							new Vector3((i+1) *mapWidth * Mathf.Cos((branch+1)*Mathf.PI/5f),
+										(i+1) *mapHeight * Mathf.Sin((branch+1)*Mathf.PI/5f), 0);
+				Debug.Log("Transfor: " + createdLocation.transform.position);
 			}
-			levels.Add(currentLevel);
-			currentLevel = nextLevel;
-			nextLevel = new List<Path>();
-		}
-
-		int level = 1;
-		Debug.Log (levels.Count);
-		foreach(List<Path> l in levels) {
-			int location = 0;
-			foreach (Path p in l) {
-				Debug.Log (l.Count);
-				Transform trans = GameObject
-					.Instantiate(locationPrefab)
-					.GetComponent<Transform>();
-
-				trans.SetParent(containerTransform);
-				trans.localPosition = new Vector3(location*(mapWidth/l.Count), level*(mapHeight/levels.Count), 0f);
-				++location;
-			}
-			++level;
 		}
 	}
+
 	
 	// Update is called once per frame
 	void Update () {

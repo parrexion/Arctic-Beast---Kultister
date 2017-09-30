@@ -2,10 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "World Map/Map")]
-public class WorldMap : ScriptableObject {
-	public List<Path> paths;
-	public List<Location> locations;
-	public List<Path> baseExits;
+public class WorldMap : MonoBehaviour {
 
+	public int startExits = 3;
+	public List<Path> paths;
+	public List<int> pathCosts;
+
+
+	public int GetRandomTravelCost(){
+		int r = Random.Range(0,pathCosts.Count);
+		int cost = pathCosts[r];
+		pathCosts.RemoveAt(r);
+		return cost;
+	}
 }

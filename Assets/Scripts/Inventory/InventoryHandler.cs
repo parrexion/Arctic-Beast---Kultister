@@ -44,7 +44,6 @@ public class InventoryHandler : MonoBehaviour {
 		}
 	}
 
-
 	public bool AddItem(Item item){
 		for (int i = 0; i < otherInventorySize; i++){
 			if (otherItems[i] == null){
