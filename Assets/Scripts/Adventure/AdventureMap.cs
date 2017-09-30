@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public class AdventureMap : MonoBehaviour {
+    
 public enum Direction {
     North,
     East,
@@ -9,7 +12,6 @@ public enum Direction {
     West
 }
 
-public class AdventureMap : MonoBehaviour {
     public AdventureTile[,] tiles;
     public PlayerActor player;
     public List<NPActor> npcs;

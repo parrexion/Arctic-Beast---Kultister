@@ -21,19 +21,19 @@ public class PlayerActor : Actor
         if (Input.GetKeyDown("up"))
         {
             Debug.Log("Walking north");
-            this.walk(Direction.North);
+            this.walk(AdventureMap.Direction.North);
         }
         else if (Input.GetKeyDown("down"))
         {
-            this.walk(Direction.South);
+            this.walk(AdventureMap.Direction.South);
         }
         else if (Input.GetKeyDown("right"))
         {
-            this.walk(Direction.East);
+            this.walk(AdventureMap.Direction.East);
         }
         else if (Input.GetKeyDown("left"))
         {
-            this.walk(Direction.West);
+            this.walk(AdventureMap.Direction.West);
         }
     }
 }

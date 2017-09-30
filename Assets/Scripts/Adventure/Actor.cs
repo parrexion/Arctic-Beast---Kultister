@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Actor : MonoBehaviour {
-    public List<TerrainType> walkableTerrains ;
+    public List<AdventureTile.TerrainType> walkableTerrains ;
     // Use this for initialization
 
     public int x, y;
@@ -16,21 +16,21 @@ public class Actor : MonoBehaviour {
         this.parentMap = parentMap;
     }
 
-    public bool walk(Direction wd)
+    public bool walk(AdventureMap.Direction wd)
     {
         int x = this.x;
         int y = this.y;
         switch (wd)
         {
-            case Direction.North:
+            case AdventureMap.Direction.North:
                 y += 1;
                 break;
-            case Direction.South:
+            case AdventureMap.Direction.South:
                 y -= 1;
                 break;
-            case Direction.West: x -= 1;
+            case AdventureMap.Direction.West: x -= 1;
                 break;
-            case Direction.East: x += 1;
+            case AdventureMap.Direction.East: x += 1;
                 break;
 
         }
@@ -55,6 +55,7 @@ public class Actor : MonoBehaviour {
         }
         else
         {
+
 			Debug.Log ("Could not find tile at {0} {1}.");
             return false;
         }
