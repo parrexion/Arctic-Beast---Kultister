@@ -25,9 +25,9 @@ public class AdventureMap : MonoBehaviour {
 		GlobalValues values = GlobalValues.instance;
 		this.maxx = width;
 		this.maxy = height;
-		this.tiles = new AdventureTile[width, height];
-		for (int i = 0; i < width; i++) {
-			for (int j = 0; j < height; j++)
+		this.tiles = new AdventureTile[maxx, maxy];
+		for (int i = 0; i < maxx; i++) {
+			for (int j = 0; j < maxy; j++)
 			{
 				AdventureTile type = blockingWallTile;
 				if (Random.Range (0, 2) == 1) type = wallTile;
@@ -46,9 +46,9 @@ public class AdventureMap : MonoBehaviour {
 		walkables.Add (startPoint);
 		walkables.AddRange (goalPoints);
 
-		//Shuffle (walkables);
+		Shuffle (walkables);
 
-		for (int i = 1; i < walkables.Count; ++i) {
+		for (int i = 2; i < walkables.Count; ++i) {
 			CreatePath (walkables[i-1], walkables[i], walkableTile);
 		}
 
@@ -56,43 +56,31 @@ public class AdventureMap : MonoBehaviour {
 
 
 	private int Sign(int i) {
-		if (i == 0) return 0;
-		Debug.Log ("Sign of " + i + " is " + (i / i));
-		return i / Abs(i);
-	}
-
-	private int Abs(int i) {
-		if (i == 0) return 0;
-		return Mathf.Abs(i);
+		if (i == 0)
+			return 0;
+		else
+			return i / i;
 	}
 
 	private void CreatePath(int[] start, int[] stop, AdventureTile type) {
-
-		Debug.Log ("start: "+start[0]+", "+start[1]);
-		Debug.Log ("stop: "+stop[0]+", "+stop[1]);
 		int[] pos = start;
 		int[] dir = { stop [0] - pos [0], stop [1] - pos [1] };
-		AddTile (pos[0], pos[1], type);
+		AddTile (start[0], start[1], type);
 
-		while(dir[1] != 0 && dir[0] != 0){
-			Debug.Log (dir[0]+", "+dir[1]);
+		while(dir[1] != 0 || dir[0] != 0){
 
-			if (Abs (dir [0]) > Abs (dir [1])) {
+			if (Mathf.Abs (dir [0]) > Mathf.Abs (dir [1])) {
 				pos [0] = pos[0]+ Sign(dir[0]);
 			}
 			else {
 				pos[1] = pos [1] + Sign(dir[1]);
 			}
-			AddTile (pos[0], pos[1], type);
-
 			dir = new[]{ stop [0] - pos [0], stop [1] - pos [1] };
 		}
 
 	}
 
 	private void AddTile(int i, int j, AdventureTile type) {
-
-		Debug.Log ("placen tiles at square "+i+", "+j);
 		AdventureTile old = tiles [i, j];
 		if (old != null) Destroy (old.gameObject);
 		AdventureTile myTile = Instantiate(type, new Vector3(i, j, 0f), Quaternion.identity);
