@@ -38,7 +38,7 @@ public class PlayerActor : Actor
         {
             wd = AdventureMap.Direction.West;
         }else if (Input.GetKeyDown("space")) {
-            turnManager.isPlayerTurn = false;
+            turnManager.passPlayerTurn();
             return;
         }
         if (wd != AdventureMap.Direction.Zero)
@@ -50,13 +50,13 @@ public class PlayerActor : Actor
             if ( this.parentMap.isTileOccupied(ax, ay, out npc))
             {
                 if (this.meleeAttack(wd)) {
-                    turnManager.passPlayerturn();
+                    turnManager.passPlayerTurn();
                 }
             }
             else { 
                 if (this.walk(wd))
                 {
-                    turnManager.passPlayerturn();
+                    turnManager.passPlayerTurn();
                 }
             }
         }

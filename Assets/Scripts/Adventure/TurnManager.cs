@@ -22,7 +22,7 @@ public class TurnManager : MonoBehaviour {
 
     public Text LeaveText;
 
-    public void passPlayerturn()
+    public void passPlayerTurn()
     {
         this.isPlayerTurn = false;
         this.isNpcTurn = true;
