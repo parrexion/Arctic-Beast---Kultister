@@ -28,6 +28,7 @@ public class Actor : MonoBehaviour {
         this.animating = true;
         this.animStart = transform.position;
         this.animEnd = new Vector3(this.x, this.y, 0f);
+        Debug.Log("Starting animation to " + this.animEnd);
     }
 
     protected virtual void stopAnimation()
@@ -42,7 +43,7 @@ public class Actor : MonoBehaviour {
     {
         if (!this.animating ) { return; }
         animationTimer += Time.deltaTime;
-        Debug.Log("Animating: " + animationTimer);
+        //Debug.Log("Animating: " + animationTimer);
         transform.position = Vector3.Lerp(this.animStart, this.animEnd, animationTimer/animationLength);
         if (animationTimer >= animationLength)
         {

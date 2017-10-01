@@ -28,6 +28,7 @@ public abstract class NPActor : Actor {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        this.animate();
+
+    }
 }

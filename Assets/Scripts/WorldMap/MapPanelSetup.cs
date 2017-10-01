@@ -21,6 +21,26 @@ public class MapPanelSetup : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
+		if (WorldMapContainer.instance == null || WorldMapContainer.instance.paths == null) {
+			GenerateMap();
+			Debug.Log("Generated map");
+		}
+		else {
+			pathContainer = WorldMapContainer.instance.paths;
+			locationContainer = WorldMapContainer.instance.locations;
+			Debug.Log("Loaded map");
+		}
+		
+	}
+
+	public void SaveMap(){
+		WorldMapContainer.instance.paths = pathContainer;
+		WorldMapContainer.instance.locations = locationContainer;
+		Debug.Log("Saved map");
+	}
+
+	public void GenerateMap(){
 		map = GetComponent<WorldMap>();
 		map.ShufflePaths();
 		RectTransform rect = GetComponent<RectTransform>();
