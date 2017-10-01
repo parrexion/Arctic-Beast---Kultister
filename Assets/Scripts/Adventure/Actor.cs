@@ -78,7 +78,9 @@ public class Actor : MonoBehaviour {
         if (this.effectsRenderer != null)
         {
             GameObject eff = Instantiate(this.effectsRenderer, new Vector3(0f, 0f, 0f), Quaternion.identity);
-            eff.transform.position = transform.position;
+            float dx = Random.Range(-1f, 0f);
+            float dy = Random.Range(-1f, 0f);
+            eff.transform.position = transform.position + new Vector3(dx, dy, 0f);
             Destroy(eff, 0.3f);
         }
     }
