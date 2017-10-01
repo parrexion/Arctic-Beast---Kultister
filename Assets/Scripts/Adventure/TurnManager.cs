@@ -97,6 +97,7 @@ public class TurnManager : MonoBehaviour {
 
     public void ReturnToMain(){
         Destroy(GlobalValues.instance.gameObject);
+        Destroy(MapPanelSetup.instance.gameObject);
         SceneManager.LoadScene(0);
     }
 }
