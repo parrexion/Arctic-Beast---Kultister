@@ -19,6 +19,8 @@ public class PlayerStats : MonoBehaviour {
 	public int maxHP;
 
 	public int days = 1;
-	public int cleared = 0;
+	public int runes = 0;
 	public int currentLocation = 0;
+
+	public bool[] foundRunes;
 }

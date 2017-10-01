@@ -30,14 +30,17 @@ public class LocationClick : MonoBehaviour, IPointerClickHandler {
     }
 
 	private void SetAvailable(int clickedID){
-		available = clickedID == id ||clickedID == backID;
+		available = (clickedID == id ||clickedID == backID);
+
+		if (clickedID != -1 || !PlayerStats.instance.foundRunes[id])
+			image.sprite = toggleSprites[0];
+		else
+			image.sprite = toggleSprites[1];
 
 		if (available) {
-        	image.sprite = toggleSprites[1];
 			image.color = Color.white;
 		}
 		else {
-			image.sprite = toggleSprites[0];
 			image.color = Color.grey;
 		}
 	}

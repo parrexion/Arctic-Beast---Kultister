@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour {
 
@@ -10,6 +11,8 @@ public class InventoryUI : MonoBehaviour {
 
 	public Transform equippedContainer;
 	public Transform otherContainer;
+
+	public Image noChangePanel;
 
 	// Use this for initialization
 	void Start () {
@@ -25,6 +28,8 @@ public class InventoryUI : MonoBehaviour {
 		for (int i = 0; i < otherItemsUI.Length; i++) {
 			otherItemsUI[i].id = i;
 		}
+
+		noChangePanel.enabled = (PlayerStats.instance.currentLocation != 0);
 	}
 
 	void OnDisable() {
