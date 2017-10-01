@@ -141,12 +141,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 272083f71ea08994caf3a460e7c74139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyTypes:
+  - {fileID: 114216617620681892, guid: 9b8e10672e405fa49a30addc595513e3, type: 2}
+  - {fileID: 0}
   levelID: -1
   nextLevelID: -1
   width: 4
   height: 4
+  pathPoints: 10
   goalCount: 3
+  enemyCount: 5
   correctness: 4
   challangeTile: {fileID: 114199395023662700, guid: c101b554f9e80a44a98f7064a03a1ce4,
     type: 2}
-  npcs: []
