@@ -11,7 +11,7 @@ public class WorldMap : MonoBehaviour {
 	public Path[] randomPaths;
 
 	public void Start() {
-		SoundPlayer.instance.baseSongs ();
+		SoundPlayer.instance.PlayBase ();
 	}
 
 	public void ShufflePaths(){
