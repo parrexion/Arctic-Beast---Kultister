@@ -42,6 +42,8 @@ public class AdventureMap : MonoBehaviour {
 
 		startPoint = new int[] { 0, 0 };
 		endPoint = new int[] { width-1, height-1 };
+		Debug.Log ("startpoint = " + startPoint [0] + ", " + startPoint [1]);
+		Debug.Log ("endpoint = " + endPoint [0] + ", " + endPoint [1]);
 
 		for(int i = 0; i < goalCount; ++i) {
 			goalPoints.Add(RandomPoint());
@@ -87,6 +89,8 @@ public class AdventureMap : MonoBehaviour {
 		//
 		//}
 
+		Debug.Log ("startpoint = " + startPoint [0] + ", " + startPoint [1]);
+		Debug.Log ("endpoint = " + endPoint [0] + ", " + endPoint [1]);
 		List<int[]> walkables = new List<int[]> ();
 		walkables.Add (startPoint);
 		walkables.Add (endPoint);
@@ -139,7 +143,7 @@ public class AdventureMap : MonoBehaviour {
 
 		//Debug.Log ("start: "+start[0]+", "+start[1]);
 		//Debug.Log ("stop: "+stop[0]+", "+stop[1]);
-		int[] pos = start;
+		int[] pos = {start[0], start[1]};
 		int[] dir = { stop [0] - pos [0], stop [1] - pos [1] };
 		AddTile (pos[0], pos[1], type);
 
@@ -177,7 +181,7 @@ public class AdventureMap : MonoBehaviour {
 
 	private void AddTile(int i, int j, AdventureTile type) {
 
-		//Debug.Log ("placing tiles at square "+i+", "+j);
+		Debug.Log ("placing tiles at square "+i+", "+j+" "+type.name);
 		if (i>= width || j >= height)
 			return;
 		AdventureTile old = tiles [i, j];
