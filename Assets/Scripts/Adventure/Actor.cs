@@ -93,9 +93,10 @@ public class Actor : MonoBehaviour {
         //Debug.Log(string.Format("Trying to walk. {0} {1} {2}", this.parentMap.tiles.Count, x, y));
         AdventureTile targetTile = this.parentMap.getTileAt(x, y);
         AdventureTile sourceTile = this.parentMap.getTileAt(this.x, this.y);
+        NPActor act;
         if (targetTile != null)
         {
-            if (targetTile.CanWalk(this))
+            if (targetTile.CanWalk(this) && !this.parentMap.isTileOccupied(x, y, out act) )
             {
                 this.x = x;
                 this.y = y;

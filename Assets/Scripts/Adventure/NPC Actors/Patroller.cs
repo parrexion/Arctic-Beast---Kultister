@@ -30,4 +30,9 @@ public class Patroller : NPActor
             }
         }
     }    
+    void Start()
+    {
+        int n = Random.Range(0, 4);
+        this.patrolDirection = AdventureMap.allDirections[n];
+    }
 }
