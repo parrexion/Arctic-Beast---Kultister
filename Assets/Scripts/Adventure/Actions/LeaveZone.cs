@@ -10,7 +10,6 @@ public class LeaveZone : OnEnterAction
     {
         if(!(actor is PlayerActor)) { return;  }
         TurnManager turnManager = TurnManager.instance;
-        turnManager.isPaused = true;
         turnManager.ShowLeaveMenu();
 
     }

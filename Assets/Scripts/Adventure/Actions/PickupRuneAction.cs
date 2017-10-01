@@ -14,7 +14,7 @@ public class PickupRuneAction : OnEnterAction
         Item pui = tile.pickupItem;
         if (pui != null)
         {
-            InventoryHandler.instance.AddItem(pui);
+            InventoryHandler.instance.SetRune(pui);
             Debug.Log("Picked up " + pui.itemName);
             tile.pickupItem = null;
         }
