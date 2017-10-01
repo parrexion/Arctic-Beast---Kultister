@@ -9,10 +9,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6f7e9e9ef144bf4b8347faabd391744, type: 3}
-  m_Name: Block of Cheese
+  m_Name: Lingonberry Juice
   m_EditorClassIdentifier: 
-  itemName: "Block of V\xE4sterboten Cheese"
+  itemName: Lingonberry Juice
   type: 0
-  icon: {fileID: 21300000, guid: abe21f88277bc8f4982ca4245487457e, type: 3}
+  icon: {fileID: 21300000, guid: e1d5f9adad02f8d49b562a7867804501, type: 3}
   consumeAction: {fileID: 11400000, guid: 566db0d6e0a655b4a91184e5e150ab3d, type: 2}
-  restorationValue: 20
+  restorationValue: 10

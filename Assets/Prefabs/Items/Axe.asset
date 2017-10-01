@@ -11,8 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6f7e9e9ef144bf4b8347faabd391744, type: 3}
   m_Name: Axe
   m_EditorClassIdentifier: 
-  itemName: 
+  itemName: Basic Axe
   type: 0
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: c6cde16d8e77a834e8ddd2b8725e928b, type: 3}
   consumeAction: {fileID: 0}
   restorationValue: 0
