@@ -12,7 +12,13 @@ public class WorldMap : MonoBehaviour {
 	public SoundPlayer sp;
 
 	public void Start() {
-		SoundPlayer.instance.PlayBase ();
+		StartCoroutine(StartSound());
+	}
+
+	public IEnumerator StartSound(){
+		while (SoundPlayer.instance == null)
+			yield return null;
+		SoundPlayer.instance.PlayBase();
 	}
 
 	public void ShufflePaths(){

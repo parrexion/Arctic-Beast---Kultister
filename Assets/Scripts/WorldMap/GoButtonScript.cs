@@ -24,7 +24,7 @@ public class GoButtonScript : MonoBehaviour {
 	}
 
 	public void GoButtonClick(){
-		mapPanel.SaveMap();
+		mapPanel.gameObject.SetActive(false);
 		SceneManager.LoadScene(2);
 	}
 }

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4559931508537344}
   - component: {fileID: 212277321057867690}
   m_Layer: 0
-  m_Name: BloodSprite
+  m_Name: Blood Drop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
