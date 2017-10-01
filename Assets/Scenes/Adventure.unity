@@ -380,7 +380,7 @@ MonoBehaviour:
   isPlayerTurn: 1
   isNpcTurn: 0
   isPaused: 0
-  InfoText: {fileID: 0}
+  InfoText: {fileID: 171287438}
 --- !u!4 &187699702
 Transform:
   m_ObjectHideFlags: 0
@@ -471,6 +471,21 @@ Prefab:
     - target: {fileID: 4278879613682676, guid: c3fee306f930cf441b6a0249cd17c5d7, type: 2}
       propertyPath: m_LocalScale.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114967619250551782, guid: c3fee306f930cf441b6a0249cd17c5d7,
+        type: 2}
+      propertyPath: width
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114967619250551782, guid: c3fee306f930cf441b6a0249cd17c5d7,
+        type: 2}
+      propertyPath: height
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114967619250551782, guid: c3fee306f930cf441b6a0249cd17c5d7,
+        type: 2}
+      propertyPath: enemyCount
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114101704376031300, guid: c3fee306f930cf441b6a0249cd17c5d7, type: 2}

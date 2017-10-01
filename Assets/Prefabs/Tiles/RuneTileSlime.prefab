@@ -84,13 +84,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blocksSight: 0
   terrainType: 0
-  enterAction: {fileID: 11400000, guid: 8e0f5f12bf736744aba582d46b5f3ec6, type: 2}
+  pickupItem: {fileID: 11400000, guid: 0d48122505f1bf147afc960977b4b643, type: 2}
+  enterAction: {fileID: 11400000, guid: 5e82d9752594a2844974f632382d3b45, type: 2}
   exitAction: {fileID: 11400000, guid: 3febb40e3ed9906408b23fc12f3e456d, type: 2}
   tickAction: {fileID: 11400000, guid: 2e46fcf4f27593748afcb2764479d8a4, type: 2}
   x: 0
   y: 0
   parentMap: {fileID: 0}
-  pickupItem: {fileID: 11400000, guid: 0d48122505f1bf147afc960977b4b643, type: 2}
 --- !u!212 &212087987566143472
 SpriteRenderer:
   m_ObjectHideFlags: 1

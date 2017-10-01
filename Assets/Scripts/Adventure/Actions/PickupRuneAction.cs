@@ -8,9 +8,9 @@ public class PickupRuneAction : OnEnterAction
 {
     public override void run(Actor actor, AdventureTile tile)
     {
-        if( !( actor is PlayerActor )) { return; }
+        if (!(actor is PlayerActor)) { return; }
         GameObject go = tile.gameObject;
-        go.GetComponentInChildren<SpriteRenderer>().enabled = false;
+        go.transform.GetChild(0).GetComponentInChildren<SpriteRenderer>().enabled = false;
         Item pui = tile.pickupItem;
         if (pui != null)
         {

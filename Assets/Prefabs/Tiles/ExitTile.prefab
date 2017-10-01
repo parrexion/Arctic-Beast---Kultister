@@ -85,7 +85,7 @@ MonoBehaviour:
   blocksSight: 0
   terrainType: 0
   pickupItem: {fileID: 0}
-  enterAction: {fileID: 11400000, guid: 8e0f5f12bf736744aba582d46b5f3ec6, type: 2}
+  enterAction: {fileID: 11400000, guid: 765c9190b04635d4ebca320ca47a350c, type: 2}
   exitAction: {fileID: 11400000, guid: 3febb40e3ed9906408b23fc12f3e456d, type: 2}
   tickAction: {fileID: 11400000, guid: 2e46fcf4f27593748afcb2764479d8a4, type: 2}
   x: 0
