@@ -16,10 +16,10 @@ public class LevelSpec : MonoBehaviour {
 
 	public int levelID = -1;
 	public int nextLevelID = -1;
-	public int width = 4;
-	public int height = 4;
-	public int goalCount = 3;
-	public int correctness = 4;
+	public int width = 20;
+	public int height = 20;
+	public int goalCount = 10;
+	public int correctness = 5;
 	public AdventureTile challangeTile;
 	public List<NPActor> npcs;
 }

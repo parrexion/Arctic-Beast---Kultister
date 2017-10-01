@@ -44,6 +44,14 @@ public class LocationClick : MonoBehaviour, IPointerClickHandler {
 
 	public bool SetGoLocation(int clickedID, int nextID){
 
+
+		LevelSpec spec = LevelSpec.instance;
+
+		spec.challangeTile = location.challangeTile;
+		spec.npcs = location.npcs;
+		spec.width = location.width;
+		spec.height = location.height;
+
 		if (available && id == clickedID){
 			image.color = Color.green;
 			LevelSpec.instance.levelID = id;

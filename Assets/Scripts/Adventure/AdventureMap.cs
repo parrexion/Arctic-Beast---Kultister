@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AdventureMap : MonoBehaviour {
-	public int width = 4;
-	public int height = 4;
-	public int goalCount = 3;
-	public int correctness = 4;
+	public int width = 20;
+	public int height = 20;
+	public int goalCount = 10;
+	public int correctness = 5;
 	public AdventureTile challangeTile;
 	public AdventureTile walkableTile;
 	public AdventureTile wallTile;
