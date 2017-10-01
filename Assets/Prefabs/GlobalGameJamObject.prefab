@@ -96,8 +96,9 @@ MonoBehaviour:
   currentHP: 20
   maxHP: 100
   days: 1
-  cleared: 0
+  runes: 0
   currentLocation: 0
+  foundRunes: 
 --- !u!114 &114967619250551782
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -111,7 +112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyTypes:
   - {fileID: 114216617620681892, guid: 9b8e10672e405fa49a30addc595513e3, type: 2}
-  - {fileID: 114350728803479468, guid: 9611984665946b94f8718b4396a5d536, type: 2}
+  - {fileID: 114906990922023324, guid: 9611984665946b94f8718b4396a5d536, type: 2}
   goalTypes:
   - {fileID: 114004449664985580, guid: 2d96b0e4c465c2e4d926f7031120a64d, type: 2}
   - {fileID: 114410344826306258, guid: 4a283c3a9db0ba643a7164803330f2ee, type: 2}
