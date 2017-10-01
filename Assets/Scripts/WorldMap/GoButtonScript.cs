@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(Button))]
 public class GoButtonScript : MonoBehaviour {
 
+	public MapPanelSetup mapPanel;
+
 	private Button button;
 	private LevelSpec levelSpec;
 
@@ -22,6 +24,7 @@ public class GoButtonScript : MonoBehaviour {
 	}
 
 	public void GoButtonClick(){
+		mapPanel.SaveMap();
 		SceneManager.LoadScene(2);
 	}
 }
