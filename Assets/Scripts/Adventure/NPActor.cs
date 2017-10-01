@@ -10,8 +10,8 @@ public abstract class NPActor : Actor {
     {
         this.animating = false;
         this.animationTimer = 0;
-        TurnManager turnManager = TurnManager.instance;
-        turnManager.passNPCTurn();
+        //TurnManager turnManager = TurnManager.instance;
+        //turnManager.passNPCTurn();
     }
 
     public override void die()

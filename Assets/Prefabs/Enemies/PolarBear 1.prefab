@@ -22,8 +22,9 @@ GameObject:
   - component: {fileID: 114350728803479468}
   - component: {fileID: 212684988764556588}
   - component: {fileID: 222017593453997756}
+  - component: {fileID: 114587773553369432}
   m_Layer: 0
-  m_Name: PolarPear
+  m_Name: PolarBear 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,16 +38,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 1655866762431764}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dccfe9a9aebc334fa43db141ea5d801, type: 3}
+  m_Script: {fileID: 11500000, guid: 455c8b721a553af438ecc44231539779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkableTerrains: 0100000000000000
+  walkableTerrains: 
   x: 0
   y: 0
   hp: 0
   attackStrength: 0
   parentMap: {fileID: 0}
-  patrolDirection: 0
+  animationLength: 0.3
+--- !u!114 &114587773553369432
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1655866762431764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 455c8b721a553af438ecc44231539779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkableTerrains: 
+  x: 0
+  y: 0
+  hp: 0
+  attackStrength: 0
+  parentMap: {fileID: 0}
+  animationLength: 0.3
 --- !u!212 &212684988764556588
 SpriteRenderer:
   m_ObjectHideFlags: 1

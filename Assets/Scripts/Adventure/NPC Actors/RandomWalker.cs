@@ -30,6 +30,7 @@ public class RandomWalker : NPActor
         foreach (AdventureMap.Direction wd in dirs) {
             if (this.walk(wd))
             {
+                this.startAnimation();
                 return;
             }
         }
