@@ -24,7 +24,7 @@ public class AdventureMap : MonoBehaviour {
 		if (spec != null) {
 
 			challangeTile = spec.challangeTile;
-			npcs = spec.npcs;
+			npcs = new List<NPActor> ();
 			correctness = spec.correctness;
 			width = spec.width;
 			height = spec.height;

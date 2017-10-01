@@ -25,5 +25,4 @@ public class LevelSpec : MonoBehaviour {
 	public int enemyCount = 5;
 	public int correctness = 5;
 	public AdventureTile challangeTile;
-	public List<NPActor> npcs;
 }
