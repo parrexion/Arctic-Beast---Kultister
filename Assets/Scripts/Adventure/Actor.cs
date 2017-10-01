@@ -16,6 +16,8 @@ public class Actor : MonoBehaviour {
     public float animationLength = 0.3f;
     protected Vector3 animStart, animEnd;
 
+    public GameObject effectsRenderer;
+
     public void initPlayer(int x, int y, AdventureMap parentMap)
     {
         this.x = x;
@@ -60,6 +62,7 @@ public class Actor : MonoBehaviour {
     {
         this.hp -= dmg;
         Debug.Log(string.Format("Took {0} damage. HP now {1}", dmg, this.hp));
+        this.renderEffect();
         if(this.hp <= 0)
         {
             this.die();
@@ -68,6 +71,16 @@ public class Actor : MonoBehaviour {
     public virtual void die()
     {
         return;
+    }
+
+    public void renderEffect()
+    {
+        if (this.effectsRenderer != null)
+        {
+            GameObject eff = Instantiate(this.effectsRenderer, new Vector3(0f, 0f, 0f), Quaternion.identity);
+            eff.transform.position = transform.position;
+            Destroy(eff, 0.3f);
+        }
     }
 
     public bool walk(AdventureMap.Direction wd)

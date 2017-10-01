@@ -6,6 +6,8 @@ public abstract class NPActor : Actor {
 
     public abstract void act();
 
+    public GameObject corpse;
+
     protected override void stopAnimation()
     {
         this.animating = false;
@@ -18,6 +20,8 @@ public abstract class NPActor : Actor {
     {
         Debug.Log("NPC dying.");
         this.parentMap.npcs.RemoveAll(n => n.x == this.x && n.y == this.y);
+        GameObject eff = Instantiate(this.corpse, new Vector3(0f, 0f, 0f), Quaternion.identity);
+        eff.transform.position = transform.position;
         Destroy(gameObject);
     }
 
