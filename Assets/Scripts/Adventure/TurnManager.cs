@@ -60,7 +60,7 @@ public class TurnManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		
+        this.LeaveText.text = "";
 	}
 	
 	// Update is called once per frame

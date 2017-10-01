@@ -18,7 +18,7 @@ public class PlayerActor : Actor
     {
         TurnManager turnManager = TurnManager.instance;
         AdventureMap.Direction wd = AdventureMap.Direction.Zero;
-        if (turnManager.playerCanAct())
+        if (!turnManager.playerCanAct())
         {
             return;
         }
