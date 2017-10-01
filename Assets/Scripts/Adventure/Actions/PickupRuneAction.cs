@@ -18,6 +18,6 @@ public class PickupRuneAction : OnEnterAction
             Debug.Log("Picked up " + pui.itemName);
             tile.pickupItem = null;
         }
-        tile.enterAction = new NullEnterAction ();
+        tile.enterAction = ScriptableObject.CreateInstance("NullEnterAction") as NullEnterAction;
     }
 }

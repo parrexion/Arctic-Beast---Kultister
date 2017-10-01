@@ -13,6 +13,7 @@ public class MapPanelSetup : MonoBehaviour {
             Destroy(gameObject);
 			instance.gameObject.SetActive(true);
 			instance.UpdateCurrentPosition();
+			instance.map.Start();
 		}
         else
             instance = this;
@@ -39,15 +40,16 @@ public class MapPanelSetup : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-			GenerateMap();
-			DontDestroyOnLoad(gameObject);
-			Debug.Log("Generated map");
+		GenerateMap();
+		UpdateCurrentPosition();
+		DontDestroyOnLoad(gameObject);
+		Debug.Log("Generated map");
 	}
 
 	public void GenerateMap(){
 		map = GetComponent<WorldMap>();
 		map.ShufflePaths();
-		RectTransform rect = GetComponent<RectTransform>();
+		// RectTransform rect = GetComponent<RectTransform>();
 		float branchesSize = (float)map.randomPaths.Length+1;
 		float deviationRange = Mathf.PI / (branchesSize * 3);
 		int id = 1;

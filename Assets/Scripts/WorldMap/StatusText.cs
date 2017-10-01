@@ -13,6 +13,12 @@ public class StatusText : MonoBehaviour {
 		if (PlayerStats.instance == null)
 			return;
 		daysText.text = "Day " + PlayerStats.instance.days;
-		clearedText.text = PlayerStats.instance.runes + " Runes";
+		int cleared = 0;
+		for (int i = 0; i < PlayerStats.instance.foundRunes.Length; i++)
+		{
+			if (PlayerStats.instance.foundRunes[i])
+			++cleared;
+		}
+		clearedText.text = cleared + " Runes";
 	}
 }

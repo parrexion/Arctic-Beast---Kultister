@@ -105,7 +105,7 @@ public class PlayerActor : Actor
     public override void die()
     {
         TurnManager turnManager = TurnManager.instance;
-        turnManager.ShowDeathMenu();
+        turnManager.PlayerDied();
     }
 
 }

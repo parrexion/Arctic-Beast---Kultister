@@ -32,7 +32,7 @@ public class WorldMap : MonoBehaviour {
 			numberoFLocations += randomPaths[i].locationsOnPath.Length;
 			i++;
 		}
-		PlayerStats.instance.foundRunes = new bool[numberoFLocations];
+		PlayerStats.instance.foundRunes = new bool[numberoFLocations+1];
 	}
 
 

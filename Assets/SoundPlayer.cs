@@ -23,7 +23,8 @@ public class SoundPlayer : MonoBehaviour {
 	void Start () {
 
 		source = GetComponent<AudioSource> ();
-		
+		source.clip = fieldSongs [Random.Range (0, fieldSongs.Count)];
+		source.Play ();
 	}
 
 	public void PlayField() {

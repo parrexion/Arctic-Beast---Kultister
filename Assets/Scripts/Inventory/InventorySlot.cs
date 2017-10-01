@@ -10,7 +10,7 @@ public class InventorySlot : MonoBehaviour {
 	public Image image;
 	public Item.ItemType itemType;
 
-	private Item item;
+	public Item item;
 
 
 	public void SetItem(Item newItem){

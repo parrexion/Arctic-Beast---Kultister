@@ -10,7 +10,7 @@ public class LeaveZone : OnEnterAction
     {
         if(!(actor is PlayerActor)) { return;  }
         TurnManager turnManager = TurnManager.instance;
-        turnManager.ShowLeaveMenu();
-
+        turnManager.FoundGoal();
+        Debug.Log("GOOOOOAL!");
     }
 }

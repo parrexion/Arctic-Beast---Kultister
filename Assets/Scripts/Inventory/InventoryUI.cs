@@ -30,6 +30,7 @@ public class InventoryUI : MonoBehaviour {
 		}
 
 		noChangePanel.enabled = (PlayerStats.instance.currentLocation != 0);
+		UpdateUI();
 	}
 
 	void OnDisable() {

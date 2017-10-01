@@ -26,7 +26,7 @@ public class ConsumeHandler : MonoBehaviour, IPointerDownHandler {
 
     public void OnPointerDown(PointerEventData eventData) {
 		if (slot.itemType == Item.ItemType.CONSUME) {
-        	bool used = item.GetComponent<Item>().Use();
+        	bool used = slot.item.Use();
 			if (used)
 				inventory.RemoveItem(slot.id);
 		}

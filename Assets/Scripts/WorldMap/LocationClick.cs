@@ -20,7 +20,7 @@ public class LocationClick : MonoBehaviour, IPointerClickHandler {
     // Use this for initialization
     void Start () {
 		image = GetComponent<Image>();
-		SetAvailable(PlayerStats.instance.currentLocation);
+		// SetAvailable(PlayerStats.instance.currentLocation);
 	}
 	
 
@@ -32,9 +32,10 @@ public class LocationClick : MonoBehaviour, IPointerClickHandler {
     }
 
 	public void SetAvailable(int clickedID){
+		image = GetComponent<Image>();
 		available = (clickedID == backID);
-
-		if (clickedID != -1 || !PlayerStats.instance.foundRunes[id])
+Debug.Log("IDIDID:  " + id);
+		if (clickedID == -1 || !PlayerStats.instance.foundRunes[id])
 			image.sprite = toggleSprites[0];
 		else
 			image.sprite = toggleSprites[1];
@@ -55,7 +56,7 @@ public class LocationClick : MonoBehaviour, IPointerClickHandler {
 
 	public bool SetGoLocation(int clickedID, int nextID){
 		LevelSpec spec = LevelSpec.instance;
-Debug.Log("asdjasjdas  " + clickedID);
+
 		spec.challangeTile = location.challangeTile;
 		spec.width = location.width;
 		spec.height = location.height;

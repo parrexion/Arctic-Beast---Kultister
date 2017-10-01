@@ -47,6 +47,8 @@ public class InventoryHandler : MonoBehaviour {
 
 	public void SetRune(Item runeItem){
 		rune = runeItem;
+		if (onItemChangedCallback != null)
+			onItemChangedCallback.Invoke();
 	}
 
 	public bool AddItem(Item item){

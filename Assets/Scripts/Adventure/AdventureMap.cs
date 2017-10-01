@@ -70,7 +70,7 @@ public class AdventureMap : MonoBehaviour {
 			ac.transform.position = new Vector3 (apos [0], apos [1], 0);
 
 		}
-		GlobalValues values = GlobalValues.instance;
+
 		this.maxx = width;
 		this.maxy = height;
 		this.tiles = new AdventureTile[width, height];
@@ -182,7 +182,7 @@ public class AdventureMap : MonoBehaviour {
 
 	private void AddTile(int i, int j, AdventureTile type) {
 
-		Debug.Log ("placing tiles at square "+i+", "+j+" "+type.name);
+		// Debug.Log ("placing tiles at square "+i+", "+j+" "+type.name);
 		if (i>= width || j >= height)
 			return;
 		AdventureTile old = tiles [i, j];
@@ -217,7 +217,7 @@ public class AdventureMap : MonoBehaviour {
         TurnManager turnManager = TurnManager.instance;
         if (turnManager.NPCCanAct())
         {
-            Debug.Log("[NPC ACTIVITY]");
+            // Debug.Log("[NPC ACTIVITY]");
             foreach (NPActor npc in this.npcs)
             {
                 //Debug.Log("npc acting");

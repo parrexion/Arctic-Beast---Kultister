@@ -8,7 +8,8 @@ public class ConsumeHealAction : ConsumeAction {
 
 	public override bool Consume(Item item)
     {
-        PlayerStats.instance.currentHP += item.restorationValue;
-        return true;
+        PlayerStats.instance.currentHP = 
+				Mathf.Min(PlayerStats.instance.maxHP, PlayerStats.instance.currentHP+item.restorationValue);
+		return true;
     }
 }

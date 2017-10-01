@@ -48,6 +48,10 @@ public class TurnManager : MonoBehaviour {
         return this.isNpcTurn && !this.isPaused;
     }
 
+    public void FoundGoal(){
+        StartCoroutine(ShowLeaveMenu());
+    }
+
     public IEnumerator ShowLeaveMenu()
     {
         this.isPaused = true;
@@ -56,6 +60,9 @@ public class TurnManager : MonoBehaviour {
         MoveOnToNextLevel();
     }
     
+    public void PlayerDied(){
+        StartCoroutine(ShowDeathMenu());
+    }
     public IEnumerator ShowDeathMenu()
     {
         this.isPaused = true; 

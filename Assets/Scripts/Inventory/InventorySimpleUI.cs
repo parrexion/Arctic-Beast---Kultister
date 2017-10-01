@@ -20,6 +20,7 @@ public class InventorySimpleUI : MonoBehaviour {
 		for (int i = 0; i < equippedItemsUI.Length; i++) {
 			equippedItemsUI[i].id = 100 + i;
 		}
+		UpdateUI();
 	}
 
 	void OnDisable() {
