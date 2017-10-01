@@ -183,7 +183,7 @@ public class AdventureMap : MonoBehaviour {
 
 	private void AddTile(int i, int j, AdventureTile type) {
 
-		//Debug.Log ("placing tiles at square "+i+", "+j+" "+type.name);
+		Debug.Log ("placing tiles at square "+i+", "+j+" "+type.name);
 		if (i>= width || j >= height)
 			return;
 		AdventureTile old = tiles [i, j];
