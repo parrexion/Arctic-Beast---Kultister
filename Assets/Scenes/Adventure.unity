@@ -380,7 +380,7 @@ MonoBehaviour:
   isPlayerTurn: 1
   isNpcTurn: 0
   isPaused: 0
-  LeaveText: {fileID: 171287438}
+  InfoText: {fileID: 0}
 --- !u!4 &187699702
 Transform:
   m_ObjectHideFlags: 0
@@ -685,6 +685,7 @@ MonoBehaviour:
   hp: 200
   attackStrength: 34
   parentMap: {fileID: 1793440550}
+  animationLength: 0.3
 --- !u!1 &891479321
 GameObject:
   m_ObjectHideFlags: 0
@@ -1526,6 +1527,7 @@ MonoBehaviour:
   wallTile: {fileID: 114817793884993290, guid: d8d07a2be15133041b880a2cb009ab00, type: 2}
   blockingWallTile: {fileID: 114762728094702796, guid: 7d7380c5952cec742998366ba6111a71,
     type: 2}
+  exitTile: {fileID: 114765615792214048, guid: 6ba6cd3a4581faa41802f8acff24eede, type: 2}
   player: {fileID: 600225681}
   npcs:
   - {fileID: 0}
