@@ -6,6 +6,7 @@ public class PlayerActor : Actor
 {
 
     //protected <List>
+    
 
     // Use this for initialization
     void Start()
@@ -18,49 +19,56 @@ public class PlayerActor : Actor
     {
         TurnManager turnManager = TurnManager.instance;
         AdventureMap.Direction wd = AdventureMap.Direction.Zero;
-        if (!turnManager.playerCanAct())
+        if (turnManager.playerCanAct())
         {
-            return;
-        }
-        if (Input.GetKeyDown("up"))
-        {
-            wd = AdventureMap.Direction.North;
-        }
-        else if (Input.GetKeyDown("down"))
-        {
-            wd = AdventureMap.Direction.South;
-        }
-        else if (Input.GetKeyDown("right"))
-        {
-            wd = AdventureMap.Direction.East; 
-        }
-        else if (Input.GetKeyDown("left"))
-        {
-            wd = AdventureMap.Direction.West;
-        }else if (Input.GetKeyDown("space")) {
-            turnManager.passPlayerTurn();
-            return;
-        }
-        if (wd != AdventureMap.Direction.Zero)
-        {
-            NPActor npc;
-            int ax = this.x;
-            int ay = this.y;
-            AdventureMap.stepFrom(ref ax, ref ay, wd);
-            if ( this.parentMap.isTileOccupied(ax, ay, out npc))
+            if (Input.GetKeyDown("up"))
             {
-                if (this.meleeAttack(wd)) {
-                    turnManager.passPlayerTurn();
-                }
+                wd = AdventureMap.Direction.North;
             }
-            else { 
-                if (this.walk(wd))
+            else if (Input.GetKeyDown("down"))
+            {
+                wd = AdventureMap.Direction.South;
+            }
+            else if (Input.GetKeyDown("right"))
+            {
+                wd = AdventureMap.Direction.East;
+            }
+            else if (Input.GetKeyDown("left"))
+            {
+                wd = AdventureMap.Direction.West;
+            }
+            else if (Input.GetKeyDown("space"))
+            {
+                turnManager.passPlayerTurn();
+                return;
+            }
+            if (wd != AdventureMap.Direction.Zero)
+            {
+                NPActor npc;
+                int ax = this.x;
+                int ay = this.y;
+                AdventureMap.stepFrom(ref ax, ref ay, wd);
+                if (this.parentMap.isTileOccupied(ax, ay, out npc))
                 {
-                    turnManager.passPlayerTurn();
+                    if (this.meleeAttack(wd))
+                    {
+                        turnManager.passPlayerTurn();
+                    }
+                }
+                else
+                {
+                    if (this.walk(wd))
+                    {
+                        turnManager.suspendPlayerTurn();
+                        this.startAnimation();
+                    }
                 }
             }
         }
+        this.animate();
     }
+
+
 
     public override bool meleeAttack(AdventureMap.Direction ad)
     {

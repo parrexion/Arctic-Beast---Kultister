@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 //using System.Random;
 
-public class Patroller : NPActor
+public class RandomWalker : NPActor
 {
-    public AdventureMap.Direction patrolDirection;
+    //public AdventureMap.Direction patrolDirection;
 
     private static System.Random rng = new System.Random();    
 

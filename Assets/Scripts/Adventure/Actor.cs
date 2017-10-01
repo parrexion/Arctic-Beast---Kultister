@@ -3,19 +3,51 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Actor : MonoBehaviour {
-    public List<AdventureTile.TerrainType> walkableTerrains ;
+    public List<AdventureTile.TerrainType> walkableTerrains;
     // Use this for initialization
 
     public int x, y;
     public int hp;
     public int attackStrength;
     public AdventureMap parentMap;
+    protected int goalx, goaly;
+    protected bool animating = false;
+    protected float animationTimer = 0f;
+    public float animationLength = 0.3f;
+    protected Vector3 animStart, animEnd;
 
     public void initPlayer(int x, int y, AdventureMap parentMap)
     {
         this.x = x;
         this.y = y;
         this.parentMap = parentMap;
+    }
+
+    protected void startAnimation()
+    {
+        this.animating = true;
+        this.animStart = transform.position;
+        this.animEnd = new Vector3(this.x, this.y, 0f);
+    }
+
+    protected virtual void stopAnimation()
+    {
+        this.animating = false;
+        this.animationTimer = 0;
+        TurnManager turnManager = TurnManager.instance;
+        turnManager.passPlayerTurn();
+    }
+
+    protected void animate()
+    {
+        if (!this.animating ) { return; }
+        animationTimer += Time.deltaTime;
+        Debug.Log("Animating: " + animationTimer);
+        transform.position = Vector3.Lerp(this.animStart, this.animEnd, animationTimer/animationLength);
+        if (animationTimer >= animationLength)
+        {
+            this.stopAnimation();
+        }
     }
 
     public virtual bool meleeAttack(AdventureMap.Direction ad)
@@ -51,7 +83,7 @@ public class Actor : MonoBehaviour {
             {
                 this.x = x;
                 this.y = y;
-                transform.position = new Vector3(x, y, 0f);
+                //transform.position = new Vector3(x, y, 0f);
                 sourceTile.OnExit(this);
                 targetTile.OnEnter(this);
                 return true;
