@@ -13,6 +13,7 @@ public class AdventureMap : MonoBehaviour {
 	public AdventureTile walkableTile;
 	public AdventureTile wallTile;
 	public AdventureTile blockingWallTile;
+	public AdventureTile exitTile;
 	public AdventureTile[,] tiles;
 	public PlayerActor player;
 	public List<NPActor> npcs;
