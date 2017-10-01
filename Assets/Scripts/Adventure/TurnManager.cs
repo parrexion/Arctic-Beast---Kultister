@@ -20,7 +20,9 @@ public class TurnManager : MonoBehaviour {
     public bool isNpcTurn;
     public bool isPaused;
 
-    public Text LeaveText;
+    public Text InfoText;
+
+    private Coroutine activeMenu;
 
     public void passPlayerTurn()
     {
@@ -48,8 +50,16 @@ public class TurnManager : MonoBehaviour {
 
     public void ShowLeaveMenu()
     {
-        this.LeaveText.text = "You are about to leave the zone.";
-        StartCoroutine(unPauseAfter(5f));
+        this.isPaused = true;
+        this.InfoText.text = "You are about to leave the zone.";
+        this.activeMenu = StartCoroutine(unPauseAfter(5f));
+    }
+    
+    public void ShowDeathMenu()
+    {
+        this.isPaused = true; 
+        this.InfoText.text = "Y O U   D I E D";
+        this.activeMenu = StartCoroutine( unPauseAfter(5f) ) ;
     }
 
     private IEnumerator unPauseAfter(float waitTime)
@@ -60,11 +70,15 @@ public class TurnManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        this.LeaveText.text = "";
+        this.InfoText.text = "";
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        
+        if (this.isPaused && this.activeMenu != null && Input.GetKeyDown("space"))
+        {
+            StopCoroutine(this.activeMenu);
+            this.activeMenu = null;
+        }        
 	}
 }
