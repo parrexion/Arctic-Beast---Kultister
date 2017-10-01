@@ -81,8 +81,12 @@ public class MapPanelSetup : MonoBehaviour {
 
 
 	public void ClickLocation(int id, int nextID){
+		// bool found = false;
+		LevelSpec.instance.levelID = -1;
+		LevelSpec.instance.nextLevelID = -1;
 		for (int i = 0; i < locations.Count; i++) {
 			locations[i].SetGoLocation(id, nextID);
+				// found = true;
 		}
 	}
 	

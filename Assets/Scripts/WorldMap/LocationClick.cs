@@ -25,7 +25,8 @@ public class LocationClick : MonoBehaviour, IPointerClickHandler {
 	
 
     public void OnPointerClick(PointerEventData eventData) {
-		mapPanel.ClickLocation(id, location.exits[0].id);
+		if (location != null && location.exits.Count > 0)
+			mapPanel.ClickLocation(id, location.exits[0].id);
     }
 
 	private void SetAvailable(int clickedID){
@@ -41,17 +42,21 @@ public class LocationClick : MonoBehaviour, IPointerClickHandler {
 		}
 	}
 
-	public void SetGoLocation(int clickedID, int nextID){
+	public bool SetGoLocation(int clickedID, int nextID){
+
 		if (available && id == clickedID){
 			image.color = Color.green;
 			LevelSpec.instance.levelID = id;
 			LevelSpec.instance.nextLevelID = nextID;
+			return true;
 		}
 		else if (available){
 			image.color = Color.white;
+			return false;
 		}
 		else {
 			image.color = Color.grey;
+			return false;
 		}
 	}
 }
