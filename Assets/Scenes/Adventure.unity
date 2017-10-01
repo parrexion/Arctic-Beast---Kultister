@@ -142,7 +142,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 10, y: 0}
+  m_AnchoredPosition: {x: 10, y: -5}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &111402102
@@ -577,6 +577,16 @@ Prefab:
       propertyPath: m_Name
       value: DisplaySlot (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 114991967136763054, guid: cc9717efe71add8459fa269fe7180467,
+        type: 2}
+      propertyPath: itemType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114596122178789232, guid: cc9717efe71add8459fa269fe7180467,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9717efe71add8459fa269fe7180467, type: 2}
   m_IsPrefabParent: 0
@@ -686,7 +696,7 @@ GameObject:
   - component: {fileID: 891479324}
   - component: {fileID: 891479323}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: RunePanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -723,7 +733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.392}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -843,7 +853,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0.58431375, g: 0.40392157, b: 0.3254902, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -960,6 +970,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   image: {fileID: 1366985020}
+  itemType: 0
 --- !u!224 &1166049138
 RectTransform:
   m_ObjectHideFlags: 0
@@ -993,7 +1004,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5, g: 0, b: 0.34137917, a: 0.166}
+  m_Color: {r: 0.5, g: 0, b: 0.34137917, a: 0.422}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1134,7 +1145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.353}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.3137255}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1799,6 +1810,16 @@ Prefab:
     - target: {fileID: 1792191349956372, guid: cc9717efe71add8459fa269fe7180467, type: 2}
       propertyPath: m_Name
       value: DisplaySlot (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114991967136763054, guid: cc9717efe71add8459fa269fe7180467,
+        type: 2}
+      propertyPath: itemType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114596122178789232, guid: cc9717efe71add8459fa269fe7180467,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc9717efe71add8459fa269fe7180467, type: 2}

@@ -10,4 +10,16 @@ public class Item : ScriptableObject {
 	public string itemName;
 	public ItemType type;
 	public Sprite icon;
+
+	public ConsumeAction consumeAction;
+	public int restorationValue = 0;
+
+
+	public bool Use(){
+		if (consumeAction == null)
+			return false;
+
+
+		return consumeAction.Consume(this);
+	}
 }
