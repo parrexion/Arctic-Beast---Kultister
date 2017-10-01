@@ -25,20 +25,28 @@ public class LocationClick : MonoBehaviour, IPointerClickHandler {
 	
 
     public void OnPointerClick(PointerEventData eventData) {
-		if (location != null && location.exits.Count > 0)
-			mapPanel.ClickLocation(id, location.exits[0].id);
+		if (location != null){
+			int next = (location.exits.Count > 0) ? location.exits[0].id : -1;
+			mapPanel.ClickLocation(id, next);
+		}
     }
 
-	private void SetAvailable(int clickedID){
-		available = (clickedID == id ||clickedID == backID);
+	public void SetAvailable(int clickedID){
+		available = (clickedID == backID);
 
 		if (clickedID != -1 || !PlayerStats.instance.foundRunes[id])
 			image.sprite = toggleSprites[0];
 		else
 			image.sprite = toggleSprites[1];
 
-		if (available) {
+		if (clickedID != 0 && id == 0){
+			image.color = Color.grey;
+		}
+		else if (available) {
 			image.color = Color.white;
+		}
+		else if (clickedID == id){
+			image.color = Color.blue;
 		}
 		else {
 			image.color = Color.grey;
@@ -47,7 +55,7 @@ public class LocationClick : MonoBehaviour, IPointerClickHandler {
 
 	public bool SetGoLocation(int clickedID, int nextID){
 		LevelSpec spec = LevelSpec.instance;
-
+Debug.Log("asdjasjdas  " + clickedID);
 		spec.challangeTile = location.challangeTile;
 		spec.width = location.width;
 		spec.height = location.height;
@@ -68,9 +76,11 @@ public class LocationClick : MonoBehaviour, IPointerClickHandler {
 			image.color = Color.white;
 			return false;
 		}
-		else {
+		else if (id != PlayerStats.instance.currentLocation){
 			image.color = Color.grey;
 			return false;
 		}
+		else
+			return false;
 	}
 }

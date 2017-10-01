@@ -5,6 +5,20 @@ using UnityEngine;
 [RequireComponent(typeof(WorldMap))]
 public class MapPanelSetup : MonoBehaviour {
 
+	#region Singleton
+    public static MapPanelSetup instance = null;
+    void Awake()
+    {
+        if (instance != null) {
+            Destroy(gameObject);
+			instance.gameObject.SetActive(true);
+			instance.UpdateCurrentPosition();
+		}
+        else
+            instance = this;
+    }
+    #endregion
+
 	private WorldMap map;
 
 	public Transform locationContainer = null;
@@ -14,30 +28,20 @@ public class MapPanelSetup : MonoBehaviour {
 	public GameObject LocationPrefab = null;
 	public GameObject pathPrefab = null;
 
+	public int screenWidth = 700;
+	public int screenHeight = 450;
+
 	public float mapHeight = 30;
 	public float mapWidth = 30;
 
-	private List<LocationClick> locations = new List<LocationClick>();
+	[SerializeField]
+	public List<LocationClick> locations = new List<LocationClick>();
 
 	// Use this for initialization
 	void Start () {
-
-		if (WorldMapContainer.instance == null || WorldMapContainer.instance.paths == null) {
 			GenerateMap();
+			DontDestroyOnLoad(gameObject);
 			Debug.Log("Generated map");
-		}
-		else {
-			pathContainer = WorldMapContainer.instance.paths;
-			locationContainer = WorldMapContainer.instance.locations;
-			Debug.Log("Loaded map");
-		}
-		
-	}
-
-	public void SaveMap(){
-		WorldMapContainer.instance.paths = pathContainer;
-		WorldMapContainer.instance.locations = locationContainer;
-		Debug.Log("Saved map");
 	}
 
 	public void GenerateMap(){
@@ -52,14 +56,15 @@ public class MapPanelSetup : MonoBehaviour {
 		baseCamp.GetComponent<LocationClick>().backID = -1;
 		baseCamp.GetComponent<LocationClick>().location.id = 0;
 		baseCamp.GetComponent<LocationClick>().mapPanel = this;
+		locations.Add(baseCamp.GetComponent<LocationClick>());
 
 		for (int branch = 0; branch < map.randomPaths.Length; branch++) {
 			Path p = map.randomPaths[branch];
 			Location location = baseCamp.GetComponent<LocationClick>().location;
 			Vector3 position = baseCamp.transform.position;
 
-			mapWidth = rect.rect.width / (2*(p.locationsOnPath.Length)+1);
-			mapHeight = rect.rect.height / (p.locationsOnPath.Length+1);
+			mapWidth = screenWidth / (2*(p.locationsOnPath.Length)+1);
+			mapHeight = screenHeight / (p.locationsOnPath.Length+1);
 
 			for (int i = 0; i < p.locationsOnPath.Length; i++) {
 				int cost = map.GetRandomTravelCost();
@@ -70,11 +75,11 @@ public class MapPanelSetup : MonoBehaviour {
 				createdLocation.transform.SetParent(locationContainer);
 
 				locations.Add(createdLocation.GetComponent<LocationClick>());
-				locations[id-1].id = id;
-				locations[id-1].location = nextLocation;
-				locations[id-1].location.id = id;
-				locations[id-1].backID = location.id;
-				locations[id-1].mapPanel = this;
+				locations[id].id = id;
+				locations[id].location = nextLocation;
+				locations[id].location.id = id;
+				locations[id].backID = location.id;
+				locations[id].mapPanel = this;
 				id++;
 
 				float angle = (branch+1)*Mathf.PI/branchesSize;
@@ -99,6 +104,12 @@ public class MapPanelSetup : MonoBehaviour {
 		}
 	}
 
+
+	public void UpdateCurrentPosition(){
+		for (int i = 0; i < locations.Count; i++) {
+			locations[i].SetAvailable(PlayerStats.instance.currentLocation);
+		}
+	}
 
 	public void ClickLocation(int id, int nextID){
 		LevelSpec.instance.levelID = -1;

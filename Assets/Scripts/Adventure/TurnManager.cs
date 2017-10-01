@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TurnManager : MonoBehaviour {
 
@@ -22,7 +23,6 @@ public class TurnManager : MonoBehaviour {
 
     public Text InfoText;
 
-    private Coroutine activeMenu;
 
     public void passPlayerTurn()
     {
@@ -48,18 +48,20 @@ public class TurnManager : MonoBehaviour {
         return this.isNpcTurn && !this.isPaused;
     }
 
-    public void ShowLeaveMenu()
+    public IEnumerator ShowLeaveMenu()
     {
         this.isPaused = true;
-        this.InfoText.text = "You are about to leave the zone.";
-        this.activeMenu = StartCoroutine(unPauseAfter(5f));
+        this.InfoText.text = "You are leaving the zone.";
+        yield return unPauseAfter(3f);
+        MoveOnToNextLevel();
     }
     
-    public void ShowDeathMenu()
+    public IEnumerator ShowDeathMenu()
     {
         this.isPaused = true; 
         this.InfoText.text = "Y O U   D I E D";
-        this.activeMenu = StartCoroutine( unPauseAfter(5f) ) ;
+        yield return unPauseAfter(3f);
+        ReturnToMain();
     }
 
     private IEnumerator unPauseAfter(float waitTime)
@@ -73,12 +75,21 @@ public class TurnManager : MonoBehaviour {
         this.InfoText.text = "";
 	}
 	
-	// Update is called once per frame
-	void Update () {
-        if (this.isPaused && this.activeMenu != null && Input.GetKeyDown("space"))
-        {
-            StopCoroutine(this.activeMenu);
-            this.activeMenu = null;
-        }        
-	}
+
+    public void MoveOnToNextLevel(){
+        PlayerStats.instance.days++;
+        PlayerStats.instance.currentLocation = (LevelSpec.instance.nextLevelID != -1) ? LevelSpec.instance.levelID: 0;
+        
+        if (InventoryHandler.instance.rune != null){
+            PlayerStats.instance.foundRunes[LevelSpec.instance.levelID] = true;
+            InventoryHandler.instance.SetRune(null);
+        }
+        
+        SceneManager.LoadScene(1);
+    }
+
+    public void ReturnToMain(){
+        Destroy(GlobalValues.instance.gameObject);
+        SceneManager.LoadScene(0);
+    }
 }
