@@ -19,9 +19,10 @@ public class InventoryHandler : MonoBehaviour {
 	public delegate void OnItemChanged();
 	public OnItemChanged onItemChangedCallback;
 
-	public int equipInventorySize = 6;
-	public int otherInventorySize = 10;
+	public int equipInventorySize = 4;
+	public int otherInventorySize = 12;
 
+	public Item rune;
 	public Item[] equippedItems;
 	public Item[] otherItems;
 
@@ -42,6 +43,10 @@ public class InventoryHandler : MonoBehaviour {
 			Item test = ScriptableObject.Instantiate(testItems[i]);
 			AddItem(test);
 		}
+	}
+
+	public void SetRune(Item runeItem){
+		rune = runeItem;
 	}
 
 	public bool AddItem(Item item){
