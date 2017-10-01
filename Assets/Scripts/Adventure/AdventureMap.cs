@@ -26,8 +26,8 @@ public class AdventureMap : MonoBehaviour {
 	void Start() {
 
 
-		SoundPlayer.instance.PlayField ();
-		LevelSpec spec = LevelSpec.instance;
+        //SoundPlayer.instance.PlayField ();
+        LevelSpec spec = LevelSpec.instance;
 
 		if (spec != null) {
 

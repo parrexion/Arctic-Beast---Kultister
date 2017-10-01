@@ -12,7 +12,7 @@ public class WorldMap : MonoBehaviour {
 	public SoundPlayer sp;
 
 	public void Start() {
-		SoundPlayer.instance.PlayBase ();
+		//sp.PlayBase ();
 	}
 
 	public void ShufflePaths(){

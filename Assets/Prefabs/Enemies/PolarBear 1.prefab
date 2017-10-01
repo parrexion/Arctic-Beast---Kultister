@@ -48,6 +48,9 @@ MonoBehaviour:
   attackStrength: 0
   parentMap: {fileID: 0}
   animationLength: 0.3
+  effectsRenderer: {fileID: 1763584496858416, guid: dc3927dce667ab34a9c57c3ed9d22b80,
+    type: 2}
+  corpse: {fileID: 1029026842882910, guid: 6cdadba6bb1b8af429fed21988a3304d, type: 2}
 --- !u!114 &114587773553369432
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -66,6 +69,8 @@ MonoBehaviour:
   attackStrength: 0
   parentMap: {fileID: 0}
   animationLength: 0.3
+  effectsRenderer: {fileID: 0}
+  corpse: {fileID: 0}
 --- !u!212 &212684988764556588
 SpriteRenderer:
   m_ObjectHideFlags: 1
