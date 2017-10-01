@@ -31,10 +31,18 @@ public class InventorySimpleUI : MonoBehaviour {
 		if (!inventory.initialized)
 			return;
 		
-		if (inventory.rune != null)
+		if (inventory.rune != null) {
 			runeSlot.SetItem(inventory.rune);
-		else
+			Color c = runeSlot.image.color;
+			c.a = 255;
+			runeSlot.image.color = c;
+		}
+		else {
 			runeSlot.SetItem(noRune);
+			Color c = runeSlot.image.color;
+			c.a = 80;
+			runeSlot.image.color = c;
+		}
 
 		for (int i = 0; i < equippedItemsUI.Length; i++) {
 			if (inventory.equippedItems[i] != null){
