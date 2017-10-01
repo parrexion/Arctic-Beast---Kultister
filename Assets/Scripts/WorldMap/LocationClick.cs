@@ -54,6 +54,9 @@ public class LocationClick : MonoBehaviour, IPointerClickHandler {
 		spec.pathPoints = location.pathPoints;
 		spec.goalCount = location.goalCount;
 		spec.enemyCount = location.enemyCount;
+		if (PlayerStats.instance.foundRunes [clickedID]) {
+			spec.goalCount = 0;
+		}
 
 		if (available && id == clickedID){
 			image.color = Color.green;
