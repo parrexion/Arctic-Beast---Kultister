@@ -9,6 +9,7 @@ public class WorldMap : MonoBehaviour {
 	public List<Path> paths;
 	public List<int> pathCosts;
 	public Path[] randomPaths;
+	public SoundPlayer sp;
 
 	public void Start() {
 		SoundPlayer.instance.PlayBase ();
