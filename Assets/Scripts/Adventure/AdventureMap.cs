@@ -63,6 +63,7 @@ public class AdventureMap : MonoBehaviour {
 			ac.parentMap = this;
 			ac.x = apos [0];
 			ac.y = apos [1];
+			ac.transform.position = new Vector3 (apos [0], apos [1], 0);
 
 		}
 		GlobalValues values = GlobalValues.instance;

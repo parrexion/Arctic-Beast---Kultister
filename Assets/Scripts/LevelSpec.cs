@@ -15,6 +15,7 @@ public class LevelSpec : MonoBehaviour {
 	#endregion
 
 	public List<NPActor> enemyTypes;
+	public List<AdventureTile> goalTypes;
 
 	public int levelID = -1;
 	public int nextLevelID = -1;
