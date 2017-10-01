@@ -90,6 +90,7 @@ public class PlayerActor : Actor
     {
         PlayerStats ps = PlayerStats.instance;
         Debug.Log("Took " + dmg + "damage." );
+        this.renderEffect();
         if(ps.currentHP <= dmg)
         {
             ps.currentHP = 0;
