@@ -19,6 +19,8 @@ public class DragHandler : MonoBehaviour, IDragHandler, IBeginDragHandler,
     void Start(){
         image = GetComponent<Image>();
         inventoryParent = GetComponentInParent<SpriteRenderer>().gameObject;
+        if (PlayerStats.instance.currentLocation != 0)
+            Destroy(this);
     }
 
     void IBeginDragHandler.OnBeginDrag(PointerEventData eventData) {

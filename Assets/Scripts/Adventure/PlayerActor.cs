@@ -89,7 +89,6 @@ public class PlayerActor : Actor
     public override void takeDamage(int dmg)
     {
         PlayerStats ps = PlayerStats.instance;
-        int hp = ps.currentHP;
         if(ps.currentHP <= dmg)
         {
             ps.currentHP = 0;

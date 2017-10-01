@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 114090835059814206}
   - component: {fileID: 114641117644464302}
   - component: {fileID: 114967619250551782}
-  - component: {fileID: 114101704376031300}
   m_Layer: 0
   m_Name: GlobalGameJamObject
   m_TagString: Untagged
@@ -65,37 +64,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c733b3ea55d7e744aa429ec3b93a60ae, type: 2}
   - {fileID: 11400000, guid: a51d50d3b5af2cd40b942979e24c146c, type: 2}
   - {fileID: 11400000, guid: 3af8f2c06cb9048458890b46f13b64b4, type: 2}
---- !u!114 &114101704376031300
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1442651829290224}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55bc3235eeef5ed4490f8afbd51c9557, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bar_xpos: 0.04
-  bar_ypos: 0.2
-  bar_width: 0.05
-  bar_height: 0.6
-  bar_borderx: 0.006
-  bar_bordery: 0.01
-  healthRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 0
-    height: 0
-  emptyRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 0
-    height: 0
-  healthTexture: {fileID: 0}
-  emptyTexture: {fileID: 0}
 --- !u!114 &114379013942591064
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -141,12 +109,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 272083f71ea08994caf3a460e7c74139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyTypes:
+  - {fileID: 114216617620681892, guid: 9b8e10672e405fa49a30addc595513e3, type: 2}
+  - {fileID: 0}
   levelID: -1
   nextLevelID: -1
   width: 4
   height: 4
+  pathPoints: 10
   goalCount: 3
+  enemyCount: 5
   correctness: 4
   challangeTile: {fileID: 114199395023662700, guid: c101b554f9e80a44a98f7064a03a1ce4,
     type: 2}
-  npcs: []

@@ -17,7 +17,9 @@ MonoBehaviour:
     type: 2}
   width: 20
   height: 20
-  npcs: []
+  pathPoints: 10
+  goalCount: 1
+  enemyCount: 5
   locationName: Path2-1
   explorationRate: 0
   travelCost: 5
