@@ -16,6 +16,7 @@ public class RandomWalker : NPActor
         {
             if (this.meleeAttack(ad))
             {
+                Debug.Log("RandomWalker attacking");
                 return;
             }
         }
@@ -28,9 +29,11 @@ public class RandomWalker : NPActor
             dirs[j] = tmp;
         }
         foreach (AdventureMap.Direction wd in dirs) {
+            //Debug.Log("RandomWalker walking" + wd);
             if (this.walk(wd))
             {
-                this.startAnimation();
+                Debug.Log("RandomWalker walking" + wd);
+                this.startAnimation();                
                 return;
             }
         }

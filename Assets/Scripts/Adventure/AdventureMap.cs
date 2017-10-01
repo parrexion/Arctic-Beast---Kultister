@@ -141,9 +141,9 @@ public class AdventureMap : MonoBehaviour {
 		AddTile (pos[0], pos[1], type);
 
 		while(dir[1] != 0 || dir[0] != 0){
-			Debug.Log (dir[0]+", "+dir[1]);
+            //Debug.Log (dir[0]+", "+dir[1]);
 
-			int rand = Random.Range (0, 4);
+            int rand = Random.Range(0, 4);
 
 			if (rand < 2) {
 				//Debug.Log ("Random nonsense on " + rand);

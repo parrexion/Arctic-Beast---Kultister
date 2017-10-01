@@ -17,12 +17,12 @@ public class Patroller : NPActor
         }
         if (this.walk(this.patrolDirection))
         {
-            Debug.Log("Could walk in original direction.");
+            //Debug.Log("Could walk in original direction.");
             this.startAnimation();
             return;
         } else
         {
-            Debug.Log("Changing direction.");
+            //Debug.Log("Changing direction.");
             this.patrolDirection = AdventureMap.oppDirection(this.patrolDirection);
             if (this.walk(this.patrolDirection)){
                 this.startAnimation();
