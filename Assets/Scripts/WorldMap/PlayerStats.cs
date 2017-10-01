@@ -15,6 +15,9 @@ public class PlayerStats : MonoBehaviour {
 	}
 	#endregion
 
+	public int currentHP;
+	public int maxHP;
+
 	public int days = 1;
 	public int cleared = 0;
 	public int currentLocation = 0;

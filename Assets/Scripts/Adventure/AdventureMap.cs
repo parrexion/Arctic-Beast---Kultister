@@ -133,6 +133,8 @@ public class AdventureMap : MonoBehaviour {
 	private void AddTile(int i, int j, AdventureTile type) {
 
 		Debug.Log ("placing tiles at square "+i+", "+j);
+		if (i>= width || j >= height)
+			return;
 		AdventureTile old = tiles [i, j];
 		if (old != null) Destroy (old.gameObject);
 		AdventureTile myTile = Instantiate(type, new Vector3(i, j, 0f), Quaternion.identity);
