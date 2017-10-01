@@ -39,6 +39,7 @@ public class AdventureMap : MonoBehaviour {
 
 		List<int[]> npcPoints = new List<int[]> ();
 		foreach(NPActor ac in npcs) {
+			ac.parentMap = this;
 			npcPoints.Add(new int[]{ac.x, ac.y});
 
 		}
