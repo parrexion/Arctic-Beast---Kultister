@@ -6,6 +6,14 @@ public abstract class NPActor : Actor {
 
     public abstract void act();
 
+    protected override void stopAnimation()
+    {
+        this.animating = false;
+        this.animationTimer = 0;
+        TurnManager turnManager = TurnManager.instance;
+        turnManager.passNPCTurn();
+    }
+
     public override void die()
     {
         Debug.Log("NPC dying.");

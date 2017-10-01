@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 
 [CreateAssetMenu(menuName = "World Map/Location")]
-
 public class Location : ScriptableObject {
 
 	[HideInInspector] public WorldMap map;
