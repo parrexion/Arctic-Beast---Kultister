@@ -78,4 +78,25 @@ public class PlayerActor : Actor
         }
     }
 
+    public override void takeDamage(int dmg)
+    {
+        PlayerStats ps = PlayerStats.instance;
+        int hp = ps.currentHP;
+        if(ps.currentHP <= dmg)
+        {
+            ps.currentHP = 0;
+            this.die();
+        }
+        else
+        {
+            ps.currentHP -= dmg;
+        }        
+    }
+
+    public override void die()
+    {
+        TurnManager turnManager = TurnManager.instance;
+
+    }
+
 }
