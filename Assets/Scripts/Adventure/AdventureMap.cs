@@ -107,12 +107,14 @@ public class AdventureMap : MonoBehaviour {
 			AddTile (p[0], p[1], type);
 		}
 
+		AddTile (endPoint [0], endPoint [1], exitTile);
+
 	}
 
 	private int[] RandomPoint() {
 		int[] p;
 		do{
-			p = new int[]{ Random.Range (1, width-1), Random.Range (1, height-1) };
+			p = new int[]{ Random.Range (0, width), Random.Range (0, height) };
 
 		} while(PointEquals(p, startPoint) || PointEquals(p, endPoint));
 		return p;
