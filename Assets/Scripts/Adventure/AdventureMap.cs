@@ -133,6 +133,8 @@ public class AdventureMap : MonoBehaviour {
 	private void AddTile(int i, int j, AdventureTile type) {
 
 		Debug.Log ("placing tiles at square "+i+", "+j);
+		if (i>= width || j >= height)
+			return;
 		AdventureTile old = tiles [i, j];
 		if (old != null) Destroy (old.gameObject);
 		AdventureTile myTile = Instantiate(type, new Vector3(i, j, 0f), Quaternion.identity);
@@ -163,7 +165,7 @@ public class AdventureMap : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         TurnManager turnManager = TurnManager.instance;
-        if (!turnManager.isPlayerTurn)
+        if (turnManager.NPCCanAct())
         {
             Debug.Log("[NPC ACTIVITY]");
             foreach (NPActor npc in this.npcs)
@@ -171,7 +173,7 @@ public class AdventureMap : MonoBehaviour {
                 //Debug.Log("npc acting");
                 npc.act();
             }
-            turnManager.isPlayerTurn = true;
+            turnManager.passNPCTurn();
         }
     }
 

@@ -16,7 +16,7 @@ public enum TerrainType {
     //public string name;
     public bool blocksSight;
     public TerrainType terrainType;
-    public List<GameItem> pickups;
+    public Item pickupItem;
 
     public OnEnterAction enterAction;
     public OnExitAction exitAction;
@@ -36,16 +36,16 @@ public enum TerrainType {
     {
         return walker.walkableTerrains.Contains(terrainType);
     }
-    public void OnEnter() {
-        this.enterAction.run();
+    public void OnEnter(Actor actor) {
+        this.enterAction.run(actor, this);
     }
-    public void OnExit()
+    public void OnExit(Actor actor)
     {
-        this.enterAction.run();
+        this.enterAction.run(actor, this);
 }
-    public void OnTick()
+    public void OnTick(Actor actor)
     {
-        this.tickAction.run();
+        this.tickAction.run(actor, this);
     }
 
 }

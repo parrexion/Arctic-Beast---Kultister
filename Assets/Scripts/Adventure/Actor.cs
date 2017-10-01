@@ -44,6 +44,7 @@ public class Actor : MonoBehaviour {
         AdventureMap.stepFrom(ref x, ref y, wd);
         //Debug.Log(string.Format("Trying to walk. {0} {1} {2}", this.parentMap.tiles.Count, x, y));
         AdventureTile targetTile = this.parentMap.getTileAt(x, y);
+        AdventureTile sourceTile = this.parentMap.getTileAt(this.x, this.y);
         if (targetTile != null)
         {
             if (targetTile.CanWalk(this))
@@ -51,7 +52,8 @@ public class Actor : MonoBehaviour {
                 this.x = x;
                 this.y = y;
                 transform.position = new Vector3(x, y, 0f);
-                targetTile.OnEnter();
+                sourceTile.OnExit(this);
+                targetTile.OnEnter(this);
                 return true;
             }
             else

@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Exit Actions/Null Exit Action")]
 public class NullExitAction : OnExitAction
 {
-    public override void run()
+    public override void run(Actor actor, AdventureTile tile)
     {
     }
 }
