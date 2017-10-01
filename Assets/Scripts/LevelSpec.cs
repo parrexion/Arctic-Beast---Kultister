@@ -14,11 +14,15 @@ public class LevelSpec : MonoBehaviour {
 	}
 	#endregion
 
+	public List<NPActor> enemyTypes;
+
 	public int levelID = -1;
 	public int nextLevelID = -1;
 	public int width = 20;
 	public int height = 20;
-	public int goalCount = 10;
+	public int pathPoints = 10;
+	public int goalCount = 5;
+	public int enemyCount = 5;
 	public int correctness = 5;
 	public AdventureTile challangeTile;
 	public List<NPActor> npcs;

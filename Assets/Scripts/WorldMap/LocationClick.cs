@@ -51,6 +51,10 @@ public class LocationClick : MonoBehaviour, IPointerClickHandler {
 		spec.npcs = location.npcs;
 		spec.width = location.width;
 		spec.height = location.height;
+		spec.pathPoints = location.pathPoints;
+		spec.goalCount = location.goalCount;
+		spec.enemyCount = location.enemyCount;
+		public int enemyCount = 5;
 
 		if (available && id == clickedID){
 			image.color = Color.green;
