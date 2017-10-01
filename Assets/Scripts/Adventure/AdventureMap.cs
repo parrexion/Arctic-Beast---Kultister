@@ -63,6 +63,7 @@ public class AdventureMap : MonoBehaviour {
 			ac.parentMap = this;
 			ac.x = apos [0];
 			ac.y = apos [1];
+			ac.transform.position = new Vector3 (apos [0], apos [1], 0);
 
 		}
 		GlobalValues values = GlobalValues.instance;
@@ -100,12 +101,17 @@ public class AdventureMap : MonoBehaviour {
 
 		CreatePath (new int[]{ width - 1, 0 }, new int[]{ 0, height - 1 }, challangeTile);
 
+		foreach(int[] p in goalPoints) {
+			AdventureTile type = spec.goalTypes [Random.Range (0, spec.goalTypes.Count)];
+			AddTile (p[0], p[1], type);
+		}
+
 	}
 
 	private int[] RandomPoint() {
 		int[] p;
 		do{
-			p = new int[]{ Random.Range (0, width), Random.Range (0, height) };
+			p = new int[]{ Random.Range (1, width-1), Random.Range (1, height-1) };
 
 		} while(PointEquals(p, startPoint) || PointEquals(p, endPoint));
 		return p;
