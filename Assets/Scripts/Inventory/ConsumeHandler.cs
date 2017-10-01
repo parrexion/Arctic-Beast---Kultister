@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 [RequireComponent(typeof(InventorySlot))]
-public class SlotHandler : MonoBehaviour, IDropHandler {
+public class ConsumeHandler : MonoBehaviour, IPointerDownHandler {
 
 	public GameObject item {
 		get { if (transform.childCount > 0){
@@ -14,7 +14,6 @@ public class SlotHandler : MonoBehaviour, IDropHandler {
 			}
 	}
 
-	private DragHandler dragHandler;
 	private InventoryHandler inventory;
 	private InventorySlot slot;
 
@@ -25,14 +24,11 @@ public class SlotHandler : MonoBehaviour, IDropHandler {
 		slot = GetComponent<InventorySlot>();
 	}
 
-
-    void IDropHandler.OnDrop(PointerEventData eventData) {
-		if (DragHandler.itemBeingDragged != null) {
-			Item.ItemType otherType = DragHandler.itemBeingDragged.GetComponent<DragHandler>().itemSlot.itemType;
-			if (otherType == slot.itemType) {
-				int startID = DragHandler.itemBeingDragged.GetComponent<DragHandler>().slotID;
-				inventory.SwapItems(startID,slot.id);
-			}
+    public void OnPointerDown(PointerEventData eventData) {
+		if (slot.itemType == Item.ItemType.CONSUME) {
+        	bool used = item.GetComponent<Item>().Use();
+			if (used)
+				inventory.RemoveItem(slot.id);
 		}
     }
 }

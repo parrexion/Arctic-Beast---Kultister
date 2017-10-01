@@ -8,6 +8,7 @@ public class InventorySlot : MonoBehaviour {
 
 	public int id = 0;
 	public Image image;
+	public Item.ItemType itemType;
 
 	private Item item;
 

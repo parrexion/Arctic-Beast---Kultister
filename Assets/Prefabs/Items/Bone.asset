@@ -11,5 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6f7e9e9ef144bf4b8347faabd391744, type: 3}
   m_Name: Bone
   m_EditorClassIdentifier: 
-  type: 0
+  itemName: Bone
+  type: 1
   icon: {fileID: 21300000, guid: 68fbefa1ca8183443bd5309dd1a6b942, type: 3}
+  consumeAction: {fileID: 0}
+  restorationValue: 0

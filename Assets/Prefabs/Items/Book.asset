@@ -11,5 +11,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6f7e9e9ef144bf4b8347faabd391744, type: 3}
   m_Name: Book
   m_EditorClassIdentifier: 
+  itemName: Book
   type: 0
   icon: {fileID: 21300000, guid: 2acf5b1d2a32e9e48867d19deffc44b1, type: 3}
+  consumeAction: {fileID: 0}
+  restorationValue: 0

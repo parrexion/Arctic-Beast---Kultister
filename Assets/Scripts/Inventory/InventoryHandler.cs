@@ -50,7 +50,11 @@ public class InventoryHandler : MonoBehaviour {
 	}
 
 	public bool AddItem(Item item){
-		for (int i = 0; i < otherInventorySize; i++){
+		int startIndex = 0;
+		Item.ItemType type = item.type;
+		if (type == Item.ItemType.CONSUME)
+			startIndex = otherInventorySize / 2;
+		for (int i = startIndex; i < otherInventorySize; i++){
 			if (otherItems[i] == null){
 				otherItems[i] = item;
 				Debug.Log("Item added to inventory!  " + i);
