@@ -380,7 +380,7 @@ MonoBehaviour:
   isPlayerTurn: 1
   isNpcTurn: 0
   isPaused: 0
-  LeaveText: {fileID: 0}
+  LeaveText: {fileID: 171287438}
 --- !u!4 &187699702
 Transform:
   m_ObjectHideFlags: 0
