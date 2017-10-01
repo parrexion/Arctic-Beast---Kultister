@@ -7,11 +7,12 @@ public class Patroller : NPActor
     public AdventureMap.Direction patrolDirection;
     public override void act()
     {
-        Debug.Log("Patroller patrolling");
+        //Debug.Log("Patroller patrolling");
         foreach (AdventureMap.Direction ad in AdventureMap.allDirections)
         {
             if (this.meleeAttack(ad))
             {
+               // Debug.Log("Patroller attacking");
                 return;
             }
         }
@@ -28,21 +29,5 @@ public class Patroller : NPActor
                 this.startAnimation();
             }
         }
-    }
-    public override bool meleeAttack(AdventureMap.Direction ad)
-    {
-        PlayerActor pc = this.parentMap.player;
-        int ax = this.x;
-        int ay = this.y;
-        AdventureMap.stepFrom(ref ax, ref ay, ad);
-        if (pc.x == ax && pc.y == ay)
-        {
-            pc.takeDamage(this.attackStrength);
-            return true;
-        }
-        else {
-            return false;
-        }
-       
-    }
+    }    
 }

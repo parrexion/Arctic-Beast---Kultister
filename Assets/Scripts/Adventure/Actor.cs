@@ -28,7 +28,7 @@ public class Actor : MonoBehaviour {
         this.animating = true;
         this.animStart = transform.position;
         this.animEnd = new Vector3(this.x, this.y, 0f);
-        Debug.Log("Starting animation to " + this.animEnd);
+       // Debug.Log("Starting animation to " + this.animEnd);
     }
 
     protected virtual void stopAnimation()

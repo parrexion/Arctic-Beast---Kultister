@@ -31,4 +31,20 @@ public abstract class NPActor : Actor {
         this.animate();
 
     }
+    public override bool meleeAttack(AdventureMap.Direction ad)
+    {
+        PlayerActor pc = this.parentMap.player;
+        int ax = this.x;
+        int ay = this.y;
+        AdventureMap.stepFrom(ref ax, ref ay, ad);
+        if (pc.x == ax && pc.y == ay)
+        {
+            pc.takeDamage(this.attackStrength);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

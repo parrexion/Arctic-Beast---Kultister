@@ -11,7 +11,7 @@ public class RandomWalker : NPActor
 
     public override void act()
     {
-        Debug.Log("RandomWalker patrolling");
+        //Debug.Log("RandomWalker patrolling");
         foreach (AdventureMap.Direction ad in AdventureMap.allDirections)
         {
             if (this.meleeAttack(ad))
@@ -32,7 +32,7 @@ public class RandomWalker : NPActor
             //Debug.Log("RandomWalker walking" + wd);
             if (this.walk(wd))
             {
-                Debug.Log("RandomWalker walking" + wd);
+                //Debug.Log("RandomWalker walking" + wd);
                 this.startAnimation();                
                 return;
             }

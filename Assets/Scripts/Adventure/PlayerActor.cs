@@ -89,6 +89,7 @@ public class PlayerActor : Actor
     public override void takeDamage(int dmg)
     {
         PlayerStats ps = PlayerStats.instance;
+        Debug.Log("Took " + dmg + "damage." );
         if(ps.currentHP <= dmg)
         {
             ps.currentHP = 0;
@@ -103,7 +104,7 @@ public class PlayerActor : Actor
     public override void die()
     {
         TurnManager turnManager = TurnManager.instance;
-
+        turnManager.ShowDeathMenu();
     }
 
 }
