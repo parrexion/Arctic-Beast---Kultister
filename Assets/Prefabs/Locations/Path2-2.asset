@@ -11,7 +11,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8edf0d4877a1f6a45a474387703a2299, type: 3}
   m_Name: Path2-2
   m_EditorClassIdentifier: 
+  map: {fileID: 0}
+  id: 14
+  challangeTile: {fileID: 114199395023662700, guid: c101b554f9e80a44a98f7064a03a1ce4,
+    type: 2}
+  width: 20
+  height: 20
+  npcs: []
   locationName: Path2-1
   explorationRate: 0
-  travelCost: 10
-  exits: []
+  travelCost: 7
+  exits:
+  - {fileID: 11400000, guid: b5056328e3ce43740af0c673075f9d21, type: 2}
+  - {fileID: 11400000, guid: b5056328e3ce43740af0c673075f9d21, type: 2}
+  - {fileID: 11400000, guid: b5056328e3ce43740af0c673075f9d21, type: 2}
+  - {fileID: 11400000, guid: b5056328e3ce43740af0c673075f9d21, type: 2}

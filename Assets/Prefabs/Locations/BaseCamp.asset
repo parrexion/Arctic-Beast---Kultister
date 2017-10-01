@@ -11,7 +11,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8edf0d4877a1f6a45a474387703a2299, type: 3}
   m_Name: BaseCamp
   m_EditorClassIdentifier: 
+  map: {fileID: 0}
+  id: 0
+  challangeTile: {fileID: 114199395023662700, guid: c101b554f9e80a44a98f7064a03a1ce4,
+    type: 2}
+  width: 20
+  height: 20
+  npcs: []
   locationName: Base Camp
   explorationRate: 0
   travelCost: 0
-  exits: []
+  exits:
+  - {fileID: 11400000, guid: 23d720b9bb82cf54088578b666ae5849, type: 2}
+  - {fileID: 11400000, guid: 16bff1dbf7ae1044db9168df9a2542fd, type: 2}
+  - {fileID: 11400000, guid: 0c6b9fdc37308054da806ca9b7ead866, type: 2}
+  - {fileID: 11400000, guid: 061f6a74aa0eb1e40a3f0b1ff7452f33, type: 2}
+  - {fileID: 11400000, guid: 061f6a74aa0eb1e40a3f0b1ff7452f33, type: 2}
+  - {fileID: 11400000, guid: 0c6b9fdc37308054da806ca9b7ead866, type: 2}
+  - {fileID: 11400000, guid: 16bff1dbf7ae1044db9168df9a2542fd, type: 2}
+  - {fileID: 11400000, guid: 23d720b9bb82cf54088578b666ae5849, type: 2}
+  - {fileID: 11400000, guid: 061f6a74aa0eb1e40a3f0b1ff7452f33, type: 2}
+  - {fileID: 11400000, guid: 16bff1dbf7ae1044db9168df9a2542fd, type: 2}
+  - {fileID: 11400000, guid: 0c6b9fdc37308054da806ca9b7ead866, type: 2}
+  - {fileID: 11400000, guid: 23d720b9bb82cf54088578b666ae5849, type: 2}
+  - {fileID: 11400000, guid: 23d720b9bb82cf54088578b666ae5849, type: 2}
+  - {fileID: 11400000, guid: 0c6b9fdc37308054da806ca9b7ead866, type: 2}
+  - {fileID: 11400000, guid: 061f6a74aa0eb1e40a3f0b1ff7452f33, type: 2}
+  - {fileID: 11400000, guid: 16bff1dbf7ae1044db9168df9a2542fd, type: 2}
