@@ -7,6 +7,8 @@ public class AdventureMap : MonoBehaviour {
 	public int height = 20;
 	public int goalCount = 10;
 	public int correctness = 5;
+	private int pathCount = 0;
+	private int enemyCount = 0;
 	public AdventureTile challangeTile;
 	public AdventureTile walkableTile;
 	public AdventureTile wallTile;
@@ -16,6 +18,9 @@ public class AdventureMap : MonoBehaviour {
 	public List<NPActor> npcs;
 	private List<int[]> goalPoints = new List<int[]>();
 	protected int maxx, maxy;
+
+	private int[] startPoint;
+	private int[] endPoint;
 	// Use this for initialization
 	void Start() {
 
@@ -24,23 +29,40 @@ public class AdventureMap : MonoBehaviour {
 		if (spec != null) {
 
 			challangeTile = spec.challangeTile;
-			npcs = spec.npcs;
+			npcs = new List<NPActor> ();
 			correctness = spec.correctness;
 			width = spec.width;
 			height = spec.height;
+			enemyCount = spec.enemyCount;
 			goalCount = spec.goalCount;
+			pathCount = spec.pathPoints - (goalCount + enemyCount);
 
 		}
 
-		int[] startPoint = { 0, 0 };
+		startPoint = new int[] { 0, 0 };
+		endPoint = new int[] { width-1, height-1 };
+
 		for(int i = 0; i < goalCount; ++i) {
-			goalPoints.Add(new int[]{Random.Range(0, width), Random.Range(0, height)});
+			goalPoints.Add(RandomPoint());
+		}
+			
+		List<int[]> pathPoints = new List<int[]> ();
+		if (pathCount > 0) {
+			for(int i = 0; i < goalCount; ++i) {
+				pathPoints.Add(RandomPoint());
+			}
 		}
 
 		List<int[]> npcPoints = new List<int[]> ();
-		foreach(NPActor ac in npcs) {
+		for (int i = 0; i < enemyCount; ++i) {
+			int[] apos = RandomPoint ();
+			npcPoints.Add(apos);
+			NPActor type = spec.enemyTypes [Random.Range (0, spec.enemyTypes.Count)];
+			NPActor ac = GameObject.Instantiate (type.gameObject).GetComponent<NPActor>();
+			npcs.Add (ac);
 			ac.parentMap = this;
-			npcPoints.Add(new int[]{ac.x, ac.y});
+			ac.x = apos [0];
+			ac.y = apos [1];
 
 		}
 		GlobalValues values = GlobalValues.instance;
@@ -65,8 +87,10 @@ public class AdventureMap : MonoBehaviour {
 
 		List<int[]> walkables = new List<int[]> ();
 		walkables.Add (startPoint);
+		walkables.Add (endPoint);
 		walkables.AddRange (goalPoints);
 		walkables.AddRange (npcPoints);
+		walkables.AddRange (pathPoints);
 
 		Shuffle (walkables);
 
@@ -78,6 +102,18 @@ public class AdventureMap : MonoBehaviour {
 
 	}
 
+	private int[] RandomPoint() {
+		int[] p;
+		do{
+			p = new int[]{ Random.Range (0, width), Random.Range (0, height) };
+
+		} while(PointEquals(p, startPoint) || PointEquals(p, endPoint));
+		return p;
+	}
+
+	private bool PointEquals(int[] a, int[] b) {
+		return (a[0]==b[0])&&(a[1]==b[1]);
+	}
 
 	private int Sign(int i) {
 		if (i == 0) return 0;

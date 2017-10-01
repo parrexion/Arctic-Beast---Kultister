@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 //using System.Random;
 
-public class Patroller : NPActor
+public class RandomWalker : NPActor
 {
     public AdventureMap.Direction patrolDirection;
 

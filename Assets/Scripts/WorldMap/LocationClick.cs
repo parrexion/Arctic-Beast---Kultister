@@ -48,9 +48,11 @@ public class LocationClick : MonoBehaviour, IPointerClickHandler {
 		LevelSpec spec = LevelSpec.instance;
 
 		spec.challangeTile = location.challangeTile;
-		spec.npcs = location.npcs;
 		spec.width = location.width;
 		spec.height = location.height;
+		spec.pathPoints = location.pathPoints;
+		spec.goalCount = location.goalCount;
+		spec.enemyCount = location.enemyCount;
 
 		if (available && id == clickedID){
 			image.color = Color.green;
