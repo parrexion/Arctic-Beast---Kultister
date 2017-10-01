@@ -424,8 +424,8 @@ MonoBehaviour:
   height: 20
   goalCount: 10
   correctness: 5
-  challangeTiles:
-  - {fileID: 114199395023662700, guid: c101b554f9e80a44a98f7064a03a1ce4, type: 2}
+  challangeTile: {fileID: 114199395023662700, guid: c101b554f9e80a44a98f7064a03a1ce4,
+    type: 2}
   walkableTile: {fileID: 114709368014986724, guid: 30b3465f56aae054597d0837acfb82f7,
     type: 2}
   wallTile: {fileID: 114817793884993290, guid: d8d07a2be15133041b880a2cb009ab00, type: 2}
