@@ -10,6 +10,10 @@ public class WorldMap : MonoBehaviour {
 	public List<int> pathCosts;
 	public Path[] randomPaths;
 
+	public void Start() {
+		SoundPlayer.instance.baseSongs ();
+	}
+
 	public void ShufflePaths(){
 		randomPaths = new Path[paths.Count];
 		int i = 0;
