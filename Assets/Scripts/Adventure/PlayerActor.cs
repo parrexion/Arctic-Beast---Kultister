@@ -37,6 +37,9 @@ public class PlayerActor : Actor
         else if (Input.GetKeyDown("left"))
         {
             wd = AdventureMap.Direction.West;
+        }else if (Input.GetKeyDown("space")) {
+            turnManager.isPlayerTurn = false;
+            return;
         }
         if (wd != AdventureMap.Direction.Zero)
         {
