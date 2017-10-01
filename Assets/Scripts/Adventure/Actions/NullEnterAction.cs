@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class NullEnterAction : OnEnterAction
 {
-    public override void run()
+    public override void run(Actor actor, AdventureTile tile)
     {
     }
 }

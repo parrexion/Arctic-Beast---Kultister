@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class OnTickAction : ScriptableObject
 {
-    public abstract void run();
+    public abstract void run(Actor actor, AdventureTile tile);
 }

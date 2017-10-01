@@ -163,7 +163,7 @@ public class AdventureMap : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         TurnManager turnManager = TurnManager.instance;
-        if (!turnManager.isPlayerTurn)
+        if (turnManager.NPCCanAct())
         {
             Debug.Log("[NPC ACTIVITY]");
             foreach (NPActor npc in this.npcs)
@@ -171,7 +171,7 @@ public class AdventureMap : MonoBehaviour {
                 //Debug.Log("npc acting");
                 npc.act();
             }
-            turnManager.isPlayerTurn = true;
+            turnManager.passNPCTurn();
         }
     }
 

@@ -18,7 +18,7 @@ public class PlayerActor : Actor
     {
         TurnManager turnManager = TurnManager.instance;
         AdventureMap.Direction wd = AdventureMap.Direction.Zero;
-        if (!turnManager.isPlayerTurn)
+        if (turnManager.playerCanAct())
         {
             return;
         }
@@ -46,10 +46,15 @@ public class PlayerActor : Actor
             AdventureMap.stepFrom(ref ax, ref ay, wd);
             if ( this.parentMap.isTileOccupied(ax, ay, out npc))
             {
-                turnManager.isPlayerTurn = !this.meleeAttack(wd);
+                if (this.meleeAttack(wd)) {
+                    turnManager.passPlayerturn();
+                }
             }
             else { 
-                turnManager.isPlayerTurn = !this.walk(wd);
+                if (this.walk(wd))
+                {
+                    turnManager.passPlayerturn();
+                }
             }
         }
     }
