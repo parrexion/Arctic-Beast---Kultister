@@ -15,7 +15,7 @@ public class LevelSpec : MonoBehaviour {
 	#endregion
 
 	public List<NPActor> enemyTypes;
-
+ 
 	public int levelID = -1;
 	public int nextLevelID = -1;
 	public int width = 20;

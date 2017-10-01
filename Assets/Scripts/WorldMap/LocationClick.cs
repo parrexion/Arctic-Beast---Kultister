@@ -46,8 +46,6 @@ public class LocationClick : MonoBehaviour, IPointerClickHandler {
 	}
 
 	public bool SetGoLocation(int clickedID, int nextID){
-
-
 		LevelSpec spec = LevelSpec.instance;
 
 		spec.challangeTile = location.challangeTile;
